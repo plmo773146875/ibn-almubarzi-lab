@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin
+Disallow: /report.html
+Disallow: /report
+
+Sitemap: https://ibn-almubarzi-lab.netlify.app/sitemap.xml
