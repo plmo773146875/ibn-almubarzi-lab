@@ -3,162 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="odlgItrPABB7SdYmCVr3lNO90da1MT4iHJbQ_ZySRqY" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>مختبرات مستشفى ابن المبرزي التخصصي | تحاليل طبية دقيقة</title>
-<meta name="description" content="مختبرات مستشفى ابن المبرزي التخصصي تقدم جميع التحاليل الطبية بدقة عالية ونتائج إلكترونية فورية آمنة.">
+<meta name="description" content="مختبرات مستشفى ابن المبرزي التخصصي - تحاليل طبية دقيقة ونتائج إلكترونية آمنة">
 <meta name="keywords" content="مختبرات طبية, تحاليل دم, مستشفى ابن المبرزي, تحاليل اليمن">
-<meta name="robots" content="index, follow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="robots" content="index,follow">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Cairo',Tahoma,sans-serif;color:#1c2b33;line-height:1.8;background:#fff;overflow-x:hidden}
+body{font-family:'Cairo',Tahoma,sans-serif;color:#1c2b33;line-height:1.8;background:#fff}
 a{text-decoration:none;color:inherit}
-
-/* ===== الشريط العلوي ===== */
-header{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);color:#1c2b33;padding:14px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(14,124,107,.08);border-bottom:1px solid rgba(14,124,107,.08)}
-.nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.brand{font-weight:700;font-size:15px;color:#0e7c6b;display:flex;align-items:center;gap:10px}
-.brand-text{display:flex;flex-direction:column;line-height:1.3}
-.brand-text .line1{font-size:15px;font-weight:700}
-.brand-text .line2{font-size:11px;color:#7b8b95;font-weight:600}
-.brand-icon{width:40px;height:40px;background:linear-gradient(135deg,#0e7c6b,#25b39a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;box-shadow:0 4px 12px rgba(14,124,107,.3);flex-shrink:0}
-nav a{color:#5a6b75;margin-inline-start:24px;font-size:14px;font-weight:600;transition:.3s;position:relative}
+header{background:#fff;padding:14px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(14,124,107,.1)}
+.nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;color:#0e7c6b;font-weight:700}
+.brand-icon{width:40px;height:40px;background:linear-gradient(135deg,#0e7c6b,#25b39a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-text .l1{font-size:14px}
+.brand-text .l2{font-size:11px;color:#7b8b95}
+nav a{color:#5a6b75;margin-inline-start:24px;font-size:14px;font-weight:600}
 nav a:hover{color:#0e7c6b}
-nav a::after{content:'';position:absolute;bottom:-6px;right:0;width:0;height:2px;background:#0e7c6b;transition:.3s}
-nav a:hover::after{width:100%}
-
-/* ===== الهيرو ===== */
-.hero{background:linear-gradient(135deg,#0a5c50 0%,#0e7c6b 50%,#25b39a 100%);color:#fff;padding:110px 24px 120px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(255,255,255,.1) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.08) 0%,transparent 50%)}
-.hero-content{position:relative;z-index:3;max-width:950px;margin:0 auto}
-.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:8px 22px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:24px;backdrop-filter:blur(10px);animation:fadeInDown .8s ease}
-.hero h1{font-size:clamp(26px,5vw,48px);margin-bottom:20px;font-weight:900;line-height:1.3;letter-spacing:-.5px;animation:fadeInUp .8s ease .2s both;text-shadow:0 2px 20px rgba(0,0,0,.15)}
-.hero p{font-size:clamp(16px,2vw,19px);max-width:720px;margin:0 auto 40px;opacity:.95;font-weight:400;line-height:1.9;animation:fadeInUp .8s ease .4s both}
-.hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeInUp .8s ease .6s both}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 36px;border-radius:50px;font-weight:700;font-size:15px;transition:.3s;font-family:'Cairo',sans-serif}
-.btn-primary{background:#fff;color:#0e7c6b;box-shadow:0 10px 30px rgba(0,0,0,.2)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,0,0,.25)}
-.btn-ghost{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4);backdrop-filter:blur(10px)}
-.btn-ghost:hover{background:rgba(255,255,255,.25);transform:translateY(-3px)}
-
-@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-
-/* ===== الفقاعات ===== */
-.bubbles{position:absolute;inset:0;overflow:hidden;z-index:1}
-.bubbles span{position:absolute;bottom:-100px;background:rgba(255,255,255,0.12);border-radius:50%;animation:rise 15s infinite ease-in;box-shadow:inset 0 0 10px rgba(255,255,255,0.4),0 0 20px rgba(255,255,255,.1)}
-.bubbles span:nth-child(1){left:8%;width:24px;height:24px;animation-duration:13s;animation-delay:0s}
-.bubbles span:nth-child(2){left:22%;width:40px;height:40px;animation-duration:17s;animation-delay:2s}
-.bubbles span:nth-child(3){left:38%;width:18px;height:18px;animation-duration:11s;animation-delay:4s}
-.bubbles span:nth-child(4){left:55%;width:30px;height:30px;animation-duration:15s;animation-delay:1s}
-.bubbles span:nth-child(5){left:70%;width:22px;height:22px;animation-duration:19s;animation-delay:3s}
-.bubbles span:nth-child(6){left:85%;width:44px;height:44px;animation-duration:21s;animation-delay:5s}
-.bubbles span:nth-child(7){left:48%;width:20px;height:20px;animation-duration:14s;animation-delay:6s}
-.bubbles span:nth-child(8){left:14%;width:32px;height:32px;animation-duration:18s;animation-delay:7s}
-.bubbles span:nth-child(9){left:65%;width:16px;height:16px;animation-duration:12s;animation-delay:8s}
-.bubbles span:nth-child(10){left:92%;width:26px;height:26px;animation-duration:16s;animation-delay:4s}
-
-@keyframes rise{
-  0%{bottom:-100px;transform:translateX(0) scale(1);opacity:0}
-  10%{opacity:1}
-  90%{opacity:0.6}
-  100%{bottom:110%;transform:translateX(40px) scale(1.4);opacity:0}
-}
-
-/* ===== الأقسام ===== */
-section{padding:80px 24px;max-width:1200px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:56px}
-.section-tag{display:inline-block;background:linear-gradient(135deg,#e8f4f2,#d1ebe6);color:#0e7c6b;padding:6px 20px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:14px;letter-spacing:.5px}
-h2{font-size:clamp(24px,3.5vw,36px);color:#1c2b33;text-align:center;margin-bottom:14px;font-weight:900;letter-spacing:-.5px}
+.hero{background:linear-gradient(135deg,#0a5c50,#0e7c6b,#25b39a);color:#fff;padding:100px 24px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(255,255,255,.1),transparent 50%)}
+.hero>*{position:relative;z-index:2}
+.badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:8px 22px;border-radius:50px;font-size:13px;margin-bottom:20px}
+.hero h1{font-size:clamp(26px,5vw,46px);font-weight:900;margin-bottom:16px;line-height:1.3}
+.hero p{font-size:17px;max-width:700px;margin:0 auto 30px;opacity:.95}
+.btn{display:inline-block;padding:14px 34px;border-radius:50px;font-weight:700;font-size:15px;margin:6px;transition:.3s}
+.btn-1{background:#fff;color:#0e7c6b}
+.btn-2{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn:hover{transform:translateY(-3px)}
+section{padding:70px 24px;max-width:1200px;margin:0 auto}
+.tag{display:block;text-align:center;color:#0e7c6b;font-weight:700;font-size:13px;margin-bottom:12px}
+h2{font-size:clamp(24px,3.5vw,34px);text-align:center;font-weight:900;margin-bottom:10px}
 h2 span{color:#0e7c6b}
-.subtitle{text-align:center;color:#7b8b95;margin-bottom:0;font-size:16px;font-weight:400}
-
-/* ===== الإحصائيات ===== */
-.stats-wrapper{background:linear-gradient(135deg,#f4f9f8 0%,#e8f4f2 100%);border-radius:24px;padding:50px 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center;box-shadow:0 10px 40px rgba(14,124,107,.08);border:1px solid rgba(14,124,107,.1)}
-.stat{position:relative}
-.stat-num{font-size:clamp(32px,5vw,52px);font-weight:900;background:linear-gradient(135deg,#0e7c6b,#25b39a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1;letter-spacing:-2px}
-.stat-label{font-size:15px;color:#5a6b75;margin-top:10px;font-weight:600}
-
-/* ===== الخدمات ===== */
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.service{background:#fff;border-radius:20px;padding:36px 28px;text-align:center;border:1px solid #e8f4f2;transition:.4s cubic-bezier(.4,0,.2,1);display:block;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(14,124,107,.06)}
-.service::before{content:'';position:absolute;top:0;right:0;width:100%;height:4px;background:linear-gradient(90deg,#0e7c6b,#25b39a);transform:scaleX(0);transform-origin:right;transition:.4s}
-.service:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(14,124,107,.15);border-color:#25b39a}
-.service:hover::before{transform:scaleX(1)}
-.service-icon{width:70px;height:70px;background:linear-gradient(135deg,#e8f4f2,#d1ebe6);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 20px;transition:.4s}
-.service:hover .service-icon{background:linear-gradient(135deg,#0e7c6b,#25b39a);transform:rotate(-5deg) scale(1.05)}
-.service h3{color:#1c2b33;font-size:19px;margin-bottom:10px;font-weight:700}
-.service p{font-size:14px;color:#7b8b95;margin-bottom:20px;line-height:1.7}
-.service .cta-small{color:#25D366;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;transition:.3s}
-.service:hover .cta-small{letter-spacing:.5px}
-
-/* ===== كيف يعمل ===== */
-.how-wrapper{background:linear-gradient(135deg,#f4f9f8 0%,#e8f4f2 100%);border-radius:24px;padding:56px 32px;position:relative;overflow:hidden}
-.how-wrapper::before{content:'';position:absolute;top:-50px;left:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(14,124,107,.08),transparent 70%);border-radius:50%}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:44px;position:relative;z-index:2}
-.step{text-align:center;position:relative;padding:30px 20px;background:#fff;border-radius:18px;box-shadow:0 4px 20px rgba(14,124,107,.06);transition:.3s}
-.step:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(14,124,107,.12)}
-.step-num{background:linear-gradient(135deg,#0e7c6b,#25b39a);color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;margin:0 auto 16px;box-shadow:0 6px 20px rgba(14,124,107,.3)}
-.step-icon{font-size:40px;margin-bottom:12px}
-.step h4{color:#1c2b33;font-size:17px;margin-bottom:8px;font-weight:700}
-.step p{font-size:14px;color:#7b8b95;line-height:1.7}
-
-/* ===== معلومات المختبر ===== */
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-.info-card{background:#fff;border-radius:18px;padding:32px 24px;text-align:center;border:1px solid #e8f4f2;transition:.3s;box-shadow:0 4px 20px rgba(14,124,107,.06)}
-.info-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(14,124,107,.12);border-color:#25b39a}
-.info-card .ic{width:60px;height:60px;background:linear-gradient(135deg,#e8f4f2,#d1ebe6);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;transition:.3s}
-.info-card:hover .ic{background:linear-gradient(135deg,#0e7c6b,#25b39a);transform:rotate(-5deg)}
-.info-card h4{color:#0e7c6b;font-size:16px;margin-bottom:10px;font-weight:700}
-.info-card p{font-size:14px;color:#5a6b75;line-height:1.7}
-
-/* ===== قسم التواصل ===== */
-.contact-wrapper{background:linear-gradient(135deg,#0a5c50 0%,#0e7c6b 50%,#25b39a 100%);color:#fff;border-radius:28px;padding:70px 32px;text-align:center;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(14,124,107,.25)}
-.contact-wrapper::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%);border-radius:50%}
-.contact-wrapper::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);border-radius:50%}
-.contact-wrapper h2{color:#fff;position:relative;z-index:2}
-.contact-wrapper p{position:relative;z-index:2;font-size:17px;opacity:.95;margin-bottom:30px}
-.contact-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
-.contact-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 38px;border-radius:50px;font-weight:700;font-size:16px;transition:.3s;font-family:'Cairo',sans-serif}
-.contact-btn-wa{background:#25D366;color:#fff;box-shadow:0 10px 30px rgba(37,211,102,.4)}
-.contact-btn-wa:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(37,211,102,.5)}
-.contact-btn-tel{background:#fff;color:#0e7c6b}
-.contact-btn-tel:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(255,255,255,.3)}
-
-/* ===== زر واتساب عائم ===== */
-.float-wa{position:fixed;bottom:28px;left:28px;background:#25D366;color:#fff;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 8px 30px rgba(37,211,102,.5);z-index:99;transition:.3s;animation:waPulse 2.5s infinite}
-.float-wa:hover{transform:scale(1.1) rotate(5deg)}
-@keyframes waPulse{0%,100%{box-shadow:0 8px 30px rgba(37,211,102,.5),0 0 0 0 rgba(37,211,102,.7)}50%{box-shadow:0 8px 30px rgba(37,211,102,.5),0 0 0 18px rgba(37,211,102,0)}}
-
-/* ===== الفوتر ===== */
-footer{background:#0f2229;color:#93a3ad;padding:50px 24px 30px;margin-top:60px;text-align:center}
-.footer-brand{font-size:19px;font-weight:700;color:#fff;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
-.footer-brand-icon{width:40px;height:40px;background:linear-gradient(135deg,#0e7c6b,#25b39a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.footer-links{margin:22px 0;display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
-.footer-links a{color:#93a3ad;font-size:14px;transition:.3s}
-.footer-links a:hover{color:#25b39a}
-.footer-divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,#25b39a,transparent);margin:24px auto}
-.footer-copy{font-size:13px;line-height:1.9;color:#6a7a84}
-.footer-copy .highlight{color:#25b39a;font-weight:600}
-
-/* ===== استجابة ===== */
-@media(max-width:768px){
-  nav{display:none}
-  .brand{font-size:13px}
-  .brand-text .line1{font-size:13px}
-  .brand-text .line2{font-size:10px}
-  .brand-icon{width:34px;height:34px;font-size:16px}
-  .hero{padding:80px 20px 90px}
-  section{padding:60px 20px}
-  .stats-wrapper{padding:40px 20px;gap:22px}
-  .how-wrapper{padding:40px 20px}
-  .contact-wrapper{padding:50px 24px}
-  .float-wa{width:56px;height:56px;font-size:26px;bottom:20px;left:20px}
-  .footer-brand{font-size:16px}
-}
+.sub{text-align:center;color:#7b8b95;margin-bottom:40px;font-size:15px}
+.stats{background:#f4f9f8;border-radius:24px;padding:50px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px;text-align:center}
+.num{font-size:44px;font-weight:900;color:#0e7c6b;display:block}
+.lbl{color:#5a6b75;font-size:14px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{background:#fff;border:1px solid #e8f4f2;border-radius:20px;padding:32px 24px;text-align:center;transition:.3s;box-shadow:0 4px 20px rgba(14,124,107,.06)}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(14,124,107,.15);border-color:#25b39a}
+.ic{width:70px;height:70px;background:#e8f4f2;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 18px;transition:.3s}
+.card:hover .ic{background:linear-gradient(135deg,#0e7c6b,#25b39a)}
+.card h3{font-size:19px;margin-bottom:10px}
+.card p{font-size:14px;color:#7b8b95;margin-bottom:16px}
+.cta{color:#25D366;font-weight:700;font-size:14px}
+.how{background:#f4f9f8;border-radius:24px;padding:50px 24px}
+.how .grid{margin-top:30px}
+.step{background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 4px 16px rgba(14,124,107,.08)}
+.snum{background:linear-gradient(135deg,#0e7c6b,#25b39a);color:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;margin:0 auto 14px}
+.sic{font-size:36px;margin-bottom:8px}
+.step h4{font-size:16px;margin-bottom:6px}
+.step p{font-size:13px;color:#7b8b95}
+.contact{background:linear-gradient(135deg,#0a5c50,#0e7c6b,#25b39a);color:#fff;border-radius:28px;padding:60px 32px;text-align:center;position:relative;overflow:hidden}
+.contact::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%);border-radius:50%}
+.contact>*{position:relative;z-index:2}
+.contact h2{color:#fff}
+.cbtn{display:inline-block;padding:15px 36px;border-radius:50px;font-weight:700;font-size:16px;margin:8px;transition:.3s}
+.cbtn-1{background:#25D366;color:#fff}
+.cbtn-2{background:#fff;color:#0e7c6b}
+.cbtn:hover{transform:translateY(-3px)}
+.float{position:fixed;bottom:24px;left:24px;background:#25D366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;box-shadow:0 8px 30px rgba(37,211,102,.5);z-index:99;animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 8px 30px rgba(37,211,102,.5),0 0 0 15px rgba(37,211,102,0)}}
+footer{background:#0f2229;color:#8d9ba4;padding:32px 24px;text-align:center;font-size:14px;line-height:2}
+footer .hl{color:#25b39a;font-weight:600}
+footer .cl{font-size:12px;opacity:.85;display:block;margin-top:6px}
+@media(max-width:768px){nav{display:none}.hero{padding:70px 20px}section{padding:50px 20px}}
 </style>
 </head>
 <body>
@@ -168,8 +78,8 @@ footer{background:#0f2229;color:#93a3ad;padding:50px 24px 30px;margin-top:60px;t
 <div class="brand">
 <span class="brand-icon">🏥</span>
 <span class="brand-text">
-<span class="line1">مختبرات مستشفى ابن المبرزي</span>
-<span class="line2">التخصصي</span>
+<span class="l1">مختبرات مستشفى ابن المبرزي</span>
+<span class="l2">التخصصي</span>
 </span>
 </div>
 <nav>
@@ -182,221 +92,98 @@ footer{background:#0f2229;color:#93a3ad;padding:50px 24px 30px;margin-top:60px;t
 </header>
 
 <section class="hero">
-<div class="bubbles">
-<span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span>
-</div>
-<div class="hero-content">
-<div class="hero-badge">✨ مختبر معتمد بأحدث المعايير الطبية</div>
+<div class="badge">✨ مختبر معتمد بأحدث المعايير الطبية</div>
 <h1>مختبرات مستشفى ابن المبرزي التخصصي</h1>
 <p>دقة في التحليل، سرعة في النتائج، وأمان في الوصول. احصل على نتيجة فحصك إلكترونياً عبر رابط خاص وآمن.</p>
-<div class="hero-buttons">
-<a href="#contact" class="btn btn-primary">احجز فحصك الآن ←</a>
-<a href="#how" class="btn btn-ghost">كيف يعمل النظام؟</a>
-</div>
-</div>
+<a href="#contact" class="btn btn-1">احجز فحصك الآن ←</a>
+<a href="#how" class="btn btn-2">كيف يعمل النظام؟</a>
 </section>
 
 <section>
-<div class="section-header">
-<span class="section-tag">📊 أرقامنا</span>
+<span class="tag">📊 أرقامنا</span>
 <h2>أرقام <span>تتحدث عنا</span></h2>
-<p class="subtitle">ثقة مرضانا هي أغلى ما نملك</p>
-</div>
-<div class="stats-wrapper">
-<div class="stat"><span class="stat-num" data-target="500">0</span><span class="stat-label">تحليل شهرياً</span></div>
-<div class="stat"><span class="stat-num" data-target="300">0</span><span class="stat-label">مريض سعيد</span></div>
-<div class="stat"><span class="stat-num" data-target="24">0</span><span class="stat-label">ساعة خدمة</span></div>
-<div class="stat"><span class="stat-num" data-target="99">0</span><span class="stat-label">% دقة مضمونة</span></div>
+<p class="sub">ثقة مرضانا هي أغلى ما نملك</p>
+<div class="stats">
+<div><span class="num">500+</span><span class="lbl">تحليل شهرياً</span></div>
+<div><span class="num">300+</span><span class="lbl">مريض سعيد</span></div>
+<div><span class="num">24</span><span class="lbl">ساعة خدمة</span></div>
+<div><span class="num">99%</span><span class="lbl">دقة مضمونة</span></div>
 </div>
 </section>
 
 <section id="services">
-<div class="section-header">
-<span class="section-tag">🩺 خدماتنا</span>
+<span class="tag">🩺 خدماتنا</span>
 <h2>خدماتنا <span>الطبية المتكاملة</span></h2>
-<p class="subtitle">اضغط على أي خدمة لحجز موعدك مباشرة عبر واتساب</p>
-</div>
-<div class="services">
+<p class="sub">اضغط على أي خدمة لحجز موعدك عبر واتساب</p>
+<div class="grid">
 
-<a class="service" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AF%D9%85" target="_blank">
-<div class="service-icon">🩸</div>
-<h3>تحاليل الدم</h3>
-<p>صورة دم كاملة، سكر، دهون، وظائف كبد وكلى</p>
-<div class="cta-small">احجز الآن ←</div>
+<a class="card" href="https://wa.me/967773146875?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AF%D9%85" target="_blank">
+<div class="ic">🩸</div><h3>تحاليل الدم</h3><p>صورة دم كاملة، سكر، دهون، وظائف كبد وكلى</p><div class="cta">احجز الآن ←</div>
 </a>
 
-<a class="service" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%81%D8%AD%D9%88%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D9%87%D8%B1%D9%85%D9%88%D9%86%D8%A7%D8%AA" target="_blank">
-<div class="service-icon">🧬</div>
-<h3>الهرمونات</h3>
-<p>الغدة الدرقية، هرمونات الخصوبة والنمو</p>
-<div class="cta-small">احجز الآن ←</div>
+<a class="card" href="https://wa.me/967773146875?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%81%D8%AD%D9%88%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D9%87%D8%B1%D9%85%D9%88%D9%86%D8%A7%D8%AA" target="_blank">
+<div class="ic">🧬</div><h3>الهرمونات</h3><p>الغدة الدرقية، هرمونات الخصوبة والنمو</p><div class="cta">احجز الآن ←</div>
 </a>
 
-<a class="service" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%84%D9%81%D8%AD%D9%88%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D9%8A%D9%83%D8%B1%D9%88%D8%A8%D9%8A%D8%A9" target="_blank">
-<div class="service-icon">🦠</div>
-<h3>الفحوصات الميكروبية</h3>
-<p>مزارع، حساسية، وفحوصات فيروسية دقيقة</p>
-<div class="cta-small">احجز الآن ←</div>
+<a class="card" href="https://wa.me/967773146875?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%84%D9%81%D8%AD%D9%88%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D9%8A%D9%83%D8%B1%D9%88%D8%A8%D9%8A%D8%A9" target="_blank">
+<div class="ic">🦠</div><h3>الفحوصات الميكروبية</h3><p>مزارع، حساسية، وفحوصات فيروسية دقيقة</p><div class="cta">احجز الآن ←</div>
 </a>
 
-<a class="service" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%84%D9%83%D9%8A%D9%85%D9%8A%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%8A%D9%88%D9%8A%D8%A9" target="_blank">
-<div class="service-icon">🧪</div>
-<h3>الكيمياء الحيوية</h3>
-<p>تحاليل دقيقة بأحدث الأجهزة الآلية</p>
-<div class="cta-small">احجز الآن ←</div>
+<a class="card" href="https://wa.me/967773146875?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%84%D9%83%D9%8A%D9%85%D9%8A%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%8A%D9%88%D9%8A%D8%A9" target="_blank">
+<div class="ic">🧪</div><h3>الكيمياء الحيوية</h3><p>تحاليل دقيقة بأحدث الأجهزة الآلية</p><div class="cta">احجز الآن ←</div>
 </a>
 
-<a class="service" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%81%D8%AD%D9%88%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B9%D8%A9%20%D9%88%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9" target="_blank">
-<div class="service-icon">💉</div>
-<h3>المناعة والحساسية</h3>
-<p>فحوصات شاملة للحساسية والمناعة</p>
-<div class="cta-small">احجز الآن ←</div>
+<a class="card" href="https://wa.me/967773146875?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%81%D8%AD%D9%88%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B9%D8%A9%20%D9%88%D8%A7%D9%84%D8%AD%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9" target="_blank">
+<div class="ic">💉</div><h3>المناعة والحساسية</h3><p>فحوصات شاملة للحساسية والمناعة</p><div class="cta">احجز الآن ←</div>
 </a>
 
-<div class="service" style="cursor:default">
-<div class="service-icon">📋</div>
-<h3>نتائج إلكترونية</h3>
-<p>يستلم المريض نتيجته عبر رابط آمن خاص به فقط</p>
-<div class="cta-small" style="color:#0e7c6b">✓ متوفر تلقائياً</div>
+<div class="card" style="cursor:default">
+<div class="ic">📋</div><h3>نتائج إلكترونية</h3><p>يستلم المريض نتيجته عبر رابط آمن خاص به فقط</p><div class="cta" style="color:#0e7c6b">✓ متوفر تلقائياً</div>
 </div>
 
 </div>
 </section>
 
 <section id="how">
-<div class="how-wrapper">
-<div class="section-header">
-<span class="section-tag">💡 آلية العمل</span>
+<div class="how">
+<span class="tag">💡 آلية العمل</span>
 <h2>كيف يعمل <span>النظام الإلكتروني؟</span></h2>
-<p class="subtitle">3 خطوات بسيطة — من الفحص إلى استلام النتيجة</p>
-</div>
-<div class="steps">
-<div class="step">
-<div class="step-num">1</div>
-<div class="step-icon">🩺</div>
-<h4>إدخال النتائج</h4>
-<p>يقوم فني المختبر بإدخال نتائج الفحص في لوحة الإدارة الآمنة</p>
-</div>
-<div class="step">
-<div class="step-num">2</div>
-<div class="step-icon">🔗</div>
-<h4>توليد رابط فريد</h4>
-<p>يُولّد النظام رابطاً سرياً خاصاً بالمريض لا يمكن تخمينه</p>
-</div>
-<div class="step">
-<div class="step-num">3</div>
-<div class="step-icon">📲</div>
-<h4>استلام النتيجة</h4>
-<p>يستلم المريض الرابط عبر واتساب ويفتحه ليرى نتيجته فقط</p>
-</div>
+<p class="sub">3 خطوات بسيطة — من الفحص إلى استلام النتيجة</p>
+<div class="grid">
+<div class="step"><div class="snum">1</div><div class="sic">🩺</div><h4>إدخال النتائج</h4><p>فني المختبر يُدخل نتائج الفحص في لوحة الإدارة الآمنة</p></div>
+<div class="step"><div class="snum">2</div><div class="sic">🔗</div><h4>توليد رابط فريد</h4><p>النظام يُولّد رابطاً سرياً خاصاً بالمريض لا يمكن تخمينه</p></div>
+<div class="step"><div class="snum">3</div><div class="sic">📲</div><h4>استلام النتيجة</h4><p>يستلم المريض الرابط عبر واتساب ويفتحه ليرى نتيجته فقط</p></div>
 </div>
 </div>
 </section>
 
 <section id="info">
-<div class="section-header">
-<span class="section-tag">📍 معلومات المختبر</span>
+<span class="tag">📍 معلومات المختبر</span>
 <h2>معلومات <span>المختبر</span></h2>
-<p class="subtitle">كل ما تحتاج معرفته عنا</p>
-</div>
-<div class="info-grid">
-<div class="info-card">
-<div class="ic">🏠</div>
-<h4>الموقع</h4>
-<p>صنعاء — سعوان</p>
-</div>
-<div class="info-card">
-<div class="ic">🕐</div>
-<h4>أوقات العمل</h4>
-<p>السبت — الخميس<br>8:00 ص — 10:00 م</p>
-</div>
-<div class="info-card">
-<div class="ic">🧪</div>
-<h4>الفحوصات</h4>
-<p>أكثر من 100 نوع<br>من التحاليل الطبية</p>
-</div>
-<div class="info-card">
-<div class="ic">💬</div>
-<h4>التواصل</h4>
-<p>عبر الواتساب<br>أو الاتصال المباشر</p>
-</div>
+<p class="sub">كل ما تحتاج معرفته عنا</p>
+<div class="grid">
+<div class="card"><div class="ic">🏠</div><h3>الموقع</h3><p>صنعاء — سعوان</p></div>
+<div class="card"><div class="ic">🕐</div><h3>أوقات العمل</h3><p>السبت — الخميس<br>8:00 ص — 10:00 م</p></div>
+<div class="card"><div class="ic">🧪</div><h3>الفحوصات</h3><p>أكثر من 100 نوع<br>من التحاليل الطبية</p></div>
+<div class="card"><div class="ic">💬</div><h3>التواصل</h3><p>عبر الواتساب<br>أو الاتصال المباشر</p></div>
 </div>
 </section>
 
 <section id="contact">
-<div class="contact-wrapper">
+<div class="contact">
 <h2>تواصل معنا</h2>
 <p>احجز فحصك أو استفسر عن أي شيء — نحن في خدمتك</p>
-<div class="contact-buttons">
-<a href="https://wa.me/967773146875" class="contact-btn contact-btn-wa">💬 محادثة واتساب</a>
-<a href="tel:+967773146875" class="contact-btn contact-btn-tel">📞 اتصل بنا</a>
-</div>
+<a href="https://wa.me/967773146875" class="cbtn cbtn-1">💬 محادثة واتساب</a>
+<a href="tel:+967773146875" class="cbtn cbtn-2">📞 اتصل بنا</a>
 </div>
 </section>
 
 <footer>
-<div class="footer-brand">
-<span class="footer-brand-icon">🏥</span>
-<span>مختبرات مستشفى ابن المبرزي التخصصي</span>
-</div>
-<div class="footer-links">
-<a href="#services">الخدمات</a>
-<a href="#how">كيف يعمل</a>
-<a href="#info">معلومات</a>
-<a href="#contact">تواصل</a>
-</div>
-<div class="footer-divider"></div>
-<p class="footer-copy">
-© <span id="year"></span> مختبرات مستشفى ابن المبرزي التخصصي — <span class="highlight">جميع الحقوق محفوظة</span><br>
-<span style="font-size:12px;opacity:.8">مشروع اختبار نهائي — كلية رواد النهضة</span>
-</p>
+© 2026 مختبرات مستشفى ابن المبرزي التخصصي — <span class="hl">جميع الحقوق محفوظة</span>
+<span class="cl">مشروع اختبار نهائي — كلية رواد النهضة</span>
 </footer>
 
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA" 
-   class="float-wa" target="_blank" title="تواصل عبر واتساب">💬</a>
+<a href="https://wa.me/967773146875" class="float" target="_blank">💬</a>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-const statNums = document.querySelectorAll('.stat-num');
-const animateNum = (el) => {
-  const target = +el.dataset.target;
-  let current = 0;
-  const step = target / 60;
-  const timer = setInterval(() => {
-    current += step;
-    if (current >= target) { current = target; clearInterval(timer); }
-    el.textContent = Math.floor(current) + (target === 99 ? '%' : '+');
-  }, 25);
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateNum(entry.target);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
-statNums.forEach(n => observer.observe(n));
-
-const cards = document.querySelectorAll('.service, .info-card, .step');
-const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '0';
-      entry.target.style.transform = 'translateY(30px)';
-      setTimeout(() => {
-        entry.target.style.transition = '0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }, i * 80);
-      cardObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-cards.forEach(c => cardObserver.observe(c));
-</script>
 </body>
 </html>
