@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
 <title>لوحة المختبر</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -79,67 +80,76 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
 const SITE_BASE = location.origin + location.pathname.replace('admin.html','') + 'report.html';
 let currentLink = '';
+
 window.doLogin = async (e) => {
-const btn = e.target;
-btn.disabled = true;
-const { error } = await supabase.auth.signInWithPassword({
-email: document.getElementById('email').value.trim(),
-password: document.getElementById('pass').value
-});
-btn.disabled = false;
-const m = document.getElementById('loginMsg');
-if (error) { m.className='msg bad'; m.textContent='❌ بيانات غير صحيحة'; return; }
-showPanel();
+  const btn = e.target;
+  btn.disabled = true;
+  const { error } = await supabase.auth.signInWithPassword({
+    email: document.getElementById('email').value.trim(),
+    password: document.getElementById('pass').value
+  });
+  btn.disabled = false;
+  const m = document.getElementById('loginMsg');
+  if (error) { m.className='msg bad'; m.textContent='❌ بيانات غير صحيحة'; return; }
+  showPanel();
 };
+
 window.doLogout = async () => { await supabase.auth.signOut(); location.reload(); };
+
 function showPanel(){
-document.getElementById('login').classList.add('hide');
-document.getElementById('panel').classList.remove('hide');
-if (!document.getElementById('pdate').value) document.getElementById('pdate').value = new Date().toISOString().slice(0,10);
-if (!document.querySelector('#rows .row')) addRow();
+  document.getElementById('login').classList.add('hide');
+  document.getElementById('panel').classList.remove('hide');
+  if (!document.getElementById('pdate').value)
+    document.getElementById('pdate').value = new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Aden'})).toISOString().slice(0,10);
+  if (!document.querySelector('#rows .row')) addRow();
 }
+
 const { data:{ session } } = await supabase.auth.getSession();
 if (session) showPanel();
+
 window.addRow = (n='',v='',u='',r='') => {
-const d = document.createElement('div');
-d.className = 'row';
-d.innerHTML = `<input placeholder="Hemoglobin" value="${n}"><input placeholder="13.5" value="${v}"><input placeholder="g/dL" value="${u}"><input placeholder="12-16" value="${r}"><button class="del" onclick="this.parentNode.remove()">✕</button>`;
-document.getElementById('rows').appendChild(d);
+  const d = document.createElement('div');
+  d.className = 'row';
+  d.innerHTML = `<input placeholder="Hemoglobin" value="${n}"><input placeholder="13.5" value="${v}"><input placeholder="g/dL" value="${u}"><input placeholder="12-16" value="${r}"><button class="del" onclick="this.parentNode.remove()">✕</button>`;
+  document.getElementById('rows').appendChild(d);
 };
+
 window.resetForm = () => {
-['pname','pphone','pfile','pnotes'].forEach(id => document.getElementById(id).value = '');
-document.getElementById('rows').innerHTML = '';
-document.getElementById('result').classList.add('hide');
-document.getElementById('saveMsg').textContent = '';
-addRow();
+  ['pname','pphone','pfile','pnotes'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('rows').innerHTML = '';
+  document.getElementById('result').classList.add('hide');
+  document.getElementById('saveMsg').textContent = '';
+  addRow();
 };
+
 window.saveReport = async () => {
-const msg = document.getElementById('saveMsg');
-const name = document.getElementById('pname').value.trim();
-if (!name) { msg.className='msg bad'; msg.textContent='⚠ اسم المريض مطلوب'; return; }
-const results = [...document.querySelectorAll('#rows .row')].map(row => {
-const i = row.querySelectorAll('input');
-return { name:i[0].value.trim(), value:i[1].value.trim(), unit:i[2].value.trim(), range:i[3].value.trim() };
-}).filter(x => x.name && x.value);
-if (!results.length) { msg.className='msg bad'; msg.textContent='⚠ أضف فحصاً واحداً على الأقل'; return; }
-msg.className='msg'; msg.textContent='جارٍ الحفظ…';
-const { data, error } = await supabase.from('reports').insert({
-patient_name: name,
-patient_phone: document.getElementById('pphone').value.trim() || null,
-file_number: document.getElementById('pfile').value.trim() || null,
-test_date: document.getElementById('pdate').value || new Date().toISOString().slice(0,10),
-results,
-notes: document.getElementById('pnotes').value.trim() || null
-}).select('token, patient_phone, patient_name').single();
-if (error) { msg.className='msg bad'; msg.textContent='❌ ' + error.message; return; }
-msg.className='msg ok'; msg.textContent='✅ تم الحفظ';
-currentLink = `${SITE_BASE}?t=${data.token}`;
-document.getElementById('linkBox').textContent = currentLink;
-document.getElementById('result').classList.remove('hide');
-const phone = (data.patient_phone||'').replace(/\D/g,'');
-const text = `🏥 مختبرات مستشفى ابن المبرزي التخصصي\n\nعزيزي ${data.patient_name}،\nنتائج فحصك جاهزة. اضغط الرابط:\n\n${currentLink}`;
-document.getElementById('waBtn').href = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(text)}` : `https://wa.me/?text=${encodeURIComponent(text)}`;
+  const msg = document.getElementById('saveMsg');
+  const name = document.getElementById('pname').value.trim();
+  if (!name) { msg.className='msg bad'; msg.textContent='⚠ اسم المريض مطلوب'; return; }
+  const results = [...document.querySelectorAll('#rows .row')].map(row => {
+    const i = row.querySelectorAll('input');
+    return { name:i[0].value.trim(), value:i[1].value.trim(), unit:i[2].value.trim(), range:i[3].value.trim() };
+  }).filter(x => x.name && x.value);
+  if (!results.length) { msg.className='msg bad'; msg.textContent='⚠ أضف فحصاً واحداً على الأقل'; return; }
+  msg.className='msg'; msg.textContent='جارٍ الحفظ…';
+  const { data, error } = await supabase.from('reports').insert({
+    patient_name: name,
+    patient_phone: document.getElementById('pphone').value.trim() || null,
+    file_number: document.getElementById('pfile').value.trim() || null,
+    test_date: document.getElementById('pdate').value || new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Aden'})).toISOString().slice(0,10),
+    results,
+    notes: document.getElementById('pnotes').value.trim() || null
+  }).select('token, patient_phone, patient_name').single();
+  if (error) { msg.className='msg bad'; msg.textContent='❌ ' + error.message; return; }
+  msg.className='msg ok'; msg.textContent='✅ تم الحفظ';
+  currentLink = `${SITE_BASE}?t=${data.token}`;
+  document.getElementById('linkBox').textContent = currentLink;
+  document.getElementById('result').classList.remove('hide');
+  const phone = (data.patient_phone||'').replace(/\D/g,'');
+  const text = `🏥 مختبرات مستشفى ابن المبرزي التخصصي\n\nعزيزي ${data.patient_name}،\nنتائج فحصك جاهزة. اضغط الرابط:\n\n${currentLink}`;
+  document.getElementById('waBtn').href = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(text)}` : `https://wa.me/?text=${encodeURIComponent(text)}`;
 };
+
 window.copyLink = () => navigator.clipboard.writeText(currentLink).then(()=>alert('تم النسخ'));
 </script>
 </body>
