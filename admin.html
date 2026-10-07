@@ -17,8 +17,9 @@ input,textarea{width:100%;padding:10px 12px;border:1px solid #d8e0e5;border-radi
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
 button{background:#0e7c6b;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px}
 button.sec{background:#eef5f4;color:#0e7c6b}
-button.del{background:#fdecea;color:#c0392b;padding:8px 12px}
+button.del{background:#fdecea;color:#c0392b;padding:8px 12px;min-width:36px}
 .row{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr 40px;gap:6px;margin-bottom:6px}
+.row input{font-size:13px;padding:8px 10px}
 .link-box{background:#eef5f4;padding:14px;border-radius:10px;word-break:break-all;font-size:13px;margin-top:12px;border-right:4px solid #0e7c6b;font-family:monospace}
 .msg{padding:12px;border-radius:9px;margin-top:12px;font-size:14px;font-weight:600}
 .ok{background:#e8f6ef;color:#1e8449}
@@ -81,7 +82,27 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
 const SITE_BASE = location.origin + location.pathname.replace('admin.html','') + 'report.html';
 let currentLink = '';
 
-window.doLogin = async (e) => {
+function getToday(){
+  return new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Aden'})).toISOString().slice(0,10);
+}
+
+function addRow(n,v,u,r){
+  n = n || ''; v = v || ''; u = u || ''; r = r || '';
+  const d = document.createElement('div');
+  d.className = 'row';
+  d.innerHTML = '<input placeholder="Hemoglobin" value="'+n+'"><input placeholder="13.5" value="'+v+'"><input placeholder="g/dL" value="'+u+'"><input placeholder="12-16" value="'+r+'"><button class="del" onclick="this.parentNode.remove()">✕</button>';
+  document.getElementById('rows').appendChild(d);
+}
+
+function showPanel(){
+  document.getElementById('login').classList.add('hide');
+  document.getElementById('panel').classList.remove('hide');
+  if (!document.getElementById('pdate').value)
+    document.getElementById('pdate').value = getToday();
+  if (!document.querySelector('#rows .row')) addRow();
+}
+
+async function doLogin(e){
   const btn = e.target;
   btn.disabled = true;
   const { error } = await supabase.auth.signInWithPassword({
@@ -92,65 +113,62 @@ window.doLogin = async (e) => {
   const m = document.getElementById('loginMsg');
   if (error) { m.className='msg bad'; m.textContent='❌ بيانات غير صحيحة'; return; }
   showPanel();
-};
-
-window.doLogout = async () => { await supabase.auth.signOut(); location.reload(); };
-
-function showPanel(){
-  document.getElementById('login').classList.add('hide');
-  document.getElementById('panel').classList.remove('hide');
-  if (!document.getElementById('pdate').value)
-    document.getElementById('pdate').value = new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Aden'})).toISOString().slice(0,10);
-  if (!document.querySelector('#rows .row')) addRow();
 }
 
-const { data:{ session } } = await supabase.auth.getSession();
-if (session) showPanel();
+async function doLogout(){ await supabase.auth.signOut(); location.reload(); }
 
-window.addRow = (n='',v='',u='',r='') => {
-  const d = document.createElement('div');
-  d.className = 'row';
-  d.innerHTML = `<input placeholder="Hemoglobin" value="${n}"><input placeholder="13.5" value="${v}"><input placeholder="g/dL" value="${u}"><input placeholder="12-16" value="${r}"><button class="del" onclick="this.parentNode.remove()">✕</button>`;
-  document.getElementById('rows').appendChild(d);
-};
-
-window.resetForm = () => {
-  ['pname','pphone','pfile','pnotes'].forEach(id => document.getElementById(id).value = '');
+function resetForm(){
+  ['pname','pphone','pfile','pnotes'].forEach(function(id){ document.getElementById(id).value = ''; });
   document.getElementById('rows').innerHTML = '';
   document.getElementById('result').classList.add('hide');
   document.getElementById('saveMsg').textContent = '';
   addRow();
-};
+}
 
-window.saveReport = async () => {
+async function saveReport(){
   const msg = document.getElementById('saveMsg');
   const name = document.getElementById('pname').value.trim();
   if (!name) { msg.className='msg bad'; msg.textContent='⚠ اسم المريض مطلوب'; return; }
-  const results = [...document.querySelectorAll('#rows .row')].map(row => {
-    const i = row.querySelectorAll('input');
-    return { name:i[0].value.trim(), value:i[1].value.trim(), unit:i[2].value.trim(), range:i[3].value.trim() };
-  }).filter(x => x.name && x.value);
+  const rows = document.querySelectorAll('#rows .row');
+  const results = [];
+  for (let i = 0; i < rows.length; i++) {
+    const inputs = rows[i].querySelectorAll('input');
+    const n = inputs[0].value.trim(), v = inputs[1].value.trim();
+    if (n && v) {
+      results.push({ name:n, value:v, unit:inputs[2].value.trim(), range:inputs[3].value.trim() });
+    }
+  }
   if (!results.length) { msg.className='msg bad'; msg.textContent='⚠ أضف فحصاً واحداً على الأقل'; return; }
   msg.className='msg'; msg.textContent='جارٍ الحفظ…';
   const { data, error } = await supabase.from('reports').insert({
     patient_name: name,
     patient_phone: document.getElementById('pphone').value.trim() || null,
     file_number: document.getElementById('pfile').value.trim() || null,
-    test_date: document.getElementById('pdate').value || new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Aden'})).toISOString().slice(0,10),
-    results,
+    test_date: document.getElementById('pdate').value || getToday(),
+    results: results,
     notes: document.getElementById('pnotes').value.trim() || null
   }).select('token, patient_phone, patient_name').single();
   if (error) { msg.className='msg bad'; msg.textContent='❌ ' + error.message; return; }
   msg.className='msg ok'; msg.textContent='✅ تم الحفظ';
-  currentLink = `${SITE_BASE}?t=${data.token}`;
+  currentLink = SITE_BASE + '?t=' + data.token;
   document.getElementById('linkBox').textContent = currentLink;
   document.getElementById('result').classList.remove('hide');
-  const phone = (data.patient_phone||'').replace(/\D/g,'');
-  const text = `🏥 مختبرات مستشفى ابن المبرزي التخصصي\n\nعزيزي ${data.patient_name}،\nنتائج فحصك جاهزة. اضغط الرابط:\n\n${currentLink}`;
-  document.getElementById('waBtn').href = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(text)}` : `https://wa.me/?text=${encodeURIComponent(text)}`;
-};
+  const phone = (data.patient_phone || '').replace(/\D/g,'');
+  const text = '🏥 مختبرات مستشفى ابن المبرزي التخصصي\n\nعزيزي ' + data.patient_name + '،\nنتائج فحصك جاهزة. اضغط الرابط:\n\n' + currentLink;
+  document.getElementById('waBtn').href = phone ? 'https://wa.me/' + phone + '?text=' + encodeURIComponent(text) : 'https://wa.me/?text=' + encodeURIComponent(text);
+}
 
-window.copyLink = () => navigator.clipboard.writeText(currentLink).then(()=>alert('تم النسخ'));
+function copyLink(){ navigator.clipboard.writeText(currentLink).then(function(){ alert('تم النسخ'); }); }
+
+window.addRow = addRow;
+window.doLogin = doLogin;
+window.doLogout = doLogout;
+window.resetForm = resetForm;
+window.saveReport = saveReport;
+window.copyLink = copyLink;
+
+const { data: { session } } = await supabase.auth.getSession();
+if (session) showPanel();
 </script>
 </body>
 </html>
