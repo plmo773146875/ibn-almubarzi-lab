@@ -9,36 +9,44 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Tahoma,sans-serif;background:#f4f7f9;color:#1c2b33;line-height:1.6}
 .wrap{max-width:820px;margin:0 auto;padding:20px 14px 50px}
-header{background:linear-gradient(135deg,#0e7c6b,#0a5c50);color:#fff;padding:24px 16px;text-align:center;border-radius:0 0 18px 18px}
+header{background:linear-gradient(135deg,#0e7c6b,#0a5c50);color:#fff;padding:24px 16px;text-align:center;border-radius:0 0 18px 18px;position:relative}
 header h1{font-size:19px}
 header p{margin-top:6px;opacity:.9;font-size:13px}
+.lang-btn{position:absolute;top:14px;inset-inline-end:14px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:.3s;display:flex;align-items:center;gap:6px}
+.lang-btn:hover{background:rgba(255,255,255,.35);transform:translateY(-1px)}
 .card{background:#fff;border-radius:16px;padding:20px;margin-top:16px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
 .info{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
 .info span{display:block;font-size:12px;color:#7b8b95}
 .info b{font-size:14px}
 table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
-th{background:#eef5f4;color:#0e7c6b;text-align:right;padding:10px;font-size:12px}
+th{background:#eef5f4;color:#0e7c6b;text-align:start;padding:10px;font-size:12px}
 td{padding:10px;border-bottom:1px solid #eef1f3}
 .flag{color:#c0392b;font-weight:700}
 .ok{color:#1e8449;font-weight:700}
-.btn{margin-top:16px;background:#0e7c6b;color:#fff;padding:12px 26px;border-radius:10px;font-weight:700;border:none;cursor:pointer;font-size:14px}
+.btn{margin-top:16px;background:#0e7c6b;color:#fff;padding:12px 26px;border-radius:10px;font-weight:700;border:none;cursor:pointer;font-size:14px;font-family:inherit}
+.btn:hover{background:#0a5c50}
 .err{text-align:center;padding:50px 20px;color:#7b8b95}
 .err b{display:block;font-size:44px;color:#c0392b;margin-bottom:10px}
 .load{text-align:center;padding:60px 20px;color:#7b8b95}
 .spin{width:36px;height:36px;border:3px solid #e3eeec;border-top-color:#0e7c6b;border-radius:50%;animation:s .8s linear infinite;margin:0 auto 14px}
 @keyframes s{to{transform:rotate(360deg)}}
-.notes{margin-top:14px;padding:12px;background:#fff9e6;border-right:4px solid #f0b429;border-radius:8px;font-size:13px}
+.notes{margin-top:14px;padding:12px;background:#fff9e6;border-inline-start:4px solid #f0b429;border-radius:8px;font-size:13px}
 footer{text-align:center;font-size:12px;color:#93a3ad;margin-top:22px;line-height:1.8}
+body.en{direction:ltr;text-align:left}
+body.en th,body.en td{text-align:left}
+body.en .notes{border-inline-start:none;border-inline-end:4px solid #f0b429}
 </style>
 </head>
 <body>
 <header>
-<h1>مختبرات مستشفى ابن المبرزي التخصصي</h1>
-<p>تقرير نتائج الفحص الطبي</p>
+<button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
+<h1 id="h1">مختبرات مستشفى ابن المبرزي التخصصي</h1>
+<p id="subtitle">تقرير نتائج الفحص الطبي</p>
 </header>
 <div class="wrap" id="app">
-<div class="card"><div class="load"><div class="spin"></div>جارٍ تحميل النتيجة…</div></div>
+<div class="card"><div class="load"><div class="spin"></div><span id="loadingText">جارٍ تحميل النتيجة…</span></div></div>
 </div>
+
 <script type="module">
 import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 const URL_S='https://sgxvdsogckuznzabpuyq.supabase.co';
@@ -48,42 +56,172 @@ const app=document.getElementById('app');
 const token=new URLSearchParams(location.search).get('t');
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function err(m){app.innerHTML=`<div class="card"><div class="err"><b>!</b>${esc(m)}</div></div>`;}
-function out(v,r){
-const n=parseFloat(v);if(isNaN(n)||!r)return false;
-const s=String(r).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
-let m;
-if(m=s.match(/^\s*([\d.]+)\s*[-–]\s*([\d.]+)/))return n<+m[1]||n>+m[2];
-if(m=s.match(/^\s*<\s*([\d.]+)/))return n>=+m[1];
-if(m=s.match(/^\s*>\s*([\d.]+)/))return n<=+m[1];
-return false;}
-if(!token||!UUID.test(token)){err('رابط غير صالح. تأكد من نسخ الرابط كاملاً.');}
-else{
-const{data,error}=await sb.rpc('get_report',{p_token:token});
-if(error){err('خطأ في الاتصال. حاول لاحقاً.');}
-else if(!data||data.length===0){err('لم يتم العثور على نتيجة لهذا الرابط.');}
-else{
-const r=data[0];
-const rows=(r.results||[]).map(x=>{
-const f=out(x.value,x.range);
-return`<tr><td>${esc(x.name)}</td><td><b class="${f?'flag':'ok'}">${esc(x.value)}${f?' ⚠':''}</b></td><td>${esc(x.unit||'')}</td><td>${esc(x.range||'')}</td></tr>`;}).join('');
-app.innerHTML=`
-<div class="card"><div class="info">
-<div><span>اسم المريض</span><b>${esc(r.patient_name)}</b></div>
-<div><span>رقم الملف</span><b>${esc(r.file_number||'—')}</b></div>
-<div><span>تاريخ الفحص</span><b>${esc(r.test_date)}</b></div>
-</div></div>
-<div class="card">
-<h3 style="color:#0e7c6b;font-size:15px">نتائج التحاليل</h3>
-<table>
-<thead><tr><th>الفحص</th><th>النتيجة</th><th>الوحدة</th><th>المعدل الطبيعي</th></tr></thead>
-<tbody>${rows}</tbody>
-</table>
-${r.notes?`<div class="notes"><b>ملاحظات:</b> ${esc(r.notes)}</div>`:''}
-<button class="btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
-</div>
-<footer>هذا التقرير صادر إلكترونياً من مختبرات مستشفى ابن المبرزي التخصصي<br>يُرجى مراجعة الطبيب المختص لتفسير النتائج</footer>`;
-}}
+
+let currentLang = 'ar';
+let reportData = null;
+
+const T = {
+  ar: {
+    title:'مختبرات مستشفى ابن المبرزي التخصصي',
+    subtitle:'تقرير نتائج الفحص الطبي',
+    loading:'جارٍ تحميل النتيجة…',
+    patient:'اسم المريض',
+    fileNo:'رقم الملف',
+    testDate:'تاريخ الفحص',
+    results:'نتائج التحاليل',
+    test:'الفحص',
+    value:'النتيجة',
+    unit:'الوحدة',
+    range:'المعدل الطبيعي',
+    notes:'ملاحظات',
+    print:'🖨️ طباعة / حفظ PDF',
+    footer1:'هذا التقرير صادر إلكترونياً من مختبرات مستشفى ابن المبرزي التخصصي',
+    footer2:'يُرجى مراجعة الطبيب المختص لتفسير النتائج',
+    invalidLink:'رابط غير صالح. تأكد من نسخ الرابط كاملاً.',
+    connError:'خطأ في الاتصال. حاول لاحقاً.',
+    noResult:'لم يتم العثور على نتيجة لهذا الرابط.',
+    noDetails:'لا توجد تفاصيل',
+    btn:'EN'
+  },
+  en: {
+    title:'Ibn Al-Mubarzi Specialized Hospital Labs',
+    subtitle:'Medical Test Results Report',
+    loading:'Loading results…',
+    patient:'Patient Name',
+    fileNo:'File No.',
+    testDate:'Test Date',
+    results:'Test Results',
+    test:'Test',
+    value:'Result',
+    unit:'Unit',
+    range:'Normal Range',
+    notes:'Notes',
+    print:'🖨️ Print / Save PDF',
+    footer1:'This report is electronically issued by Ibn Al-Mubarzi Specialized Hospital Labs',
+    footer2:'Please consult your doctor to interpret the results',
+    invalidLink:'Invalid link. Make sure to copy the full link.',
+    connError:'Connection error. Please try again later.',
+    noResult:'No result found for this link.',
+    noDetails:'No details available',
+    btn:'ع'
+  }
+};
+
+// ترجمة أسماء التحاليل الطبية
+const TEST_TRANSLATIONS = {
+  'Hemoglobin':'الهيموغلوبين',
+  'Blood Sugar':'سكر الدم',
+  'Cholesterol':'الكوليسترول',
+  'WBC':'كريات الدم البيضاء',
+  'RBC':'كريات الدم الحمراء',
+  'Platelets':'الصفائح الدموية',
+  'Creatinine':'الكرياتينين',
+  'Urea':'اليوريا',
+  'ALT':'إنزيم الكبد ALT',
+  'AST':'إنزيم الكبد AST',
+  'TSH':'هرمون الغدة الدرقية',
+  'T3':'هرمون T3',
+  'T4':'هرمون T4',
+  'HbA1c':'السكر التراكمي',
+  'FBS':'سكر الدم الصائم',
+  'Ferritin':'مخزون الحديد',
+  'Vitamin D':'فيتامين د',
+  'Vitamin B12':'فيتامين ب12',
+  'Calcium':'الكالسيوم',
+  'Uric Acid':'حمض اليوريك',
+  'HCG':'هرمون الحمل',
+  'ESR':'سرعة الترسيب',
+  'Bilirubin':'البيليروبين',
+  'Albumin':'الألبومين',
+  'Total Protein':'البروتين الكلي',
+  'HDL':'الكوليسترول النافع',
+  'LDL':'الكوليسترول الضار',
+  'Triglycerides':'الدهون الثلاثية',
+  'Prolactin':'هرمون الحليب',
+  'Testosterone':'التستوستيرون',
+  'Estrogen':'الإستروجين'
+};
+
+function translateTest(name, lang){
+  if (lang === 'en') return name; // يبقى إنجليزي
+  // نبحث عن الترجمة
+  return TEST_TRANSLATIONS[name] || name;
+}
+
+function isOutOfRange(value, range){
+  const v = parseFloat(value);
+  if (isNaN(v) || !range) return false;
+  const r = String(range).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+  let m;
+  if ((m = r.match(/^\s*([\d.]+)\s*[-–]\s*([\d.]+)/))) return v < +m[1] || v > +m[2];
+  if ((m = r.match(/^\s*<\s*([\d.]+)/)))  return v >= +m[1];
+  if ((m = r.match(/^\s*>\s*([\d.]+)/)))  return v <= +m[1];
+  return false;
+}
+
+function errorPage(msg){
+  app.innerHTML = `<div class="card"><div class="err"><b>!</b>${esc(msg)}</div></div>`;
+}
+
+function renderReport(){
+  if (!reportData) return;
+  const r = reportData;
+  const t = T[currentLang];
+  const rows = (r.results || []).map(x => {
+    const out = isOutOfRange(x.value, x.range);
+    const testName = translateTest(x.name, currentLang);
+    return `<tr>
+      <td>${esc(testName)}</td>
+      <td><b class="${out?'flag':'ok'}">${esc(x.value)}${out?' ⚠':''}</b></td>
+      <td>${esc(x.unit||'')}</td>
+      <td>${esc(x.range||'')}</td>
+    </tr>`;
+  }).join('');
+
+  app.innerHTML = `
+    <div class="card">
+      <div class="info">
+        <div><span>${t.patient}</span><b>${esc(r.patient_name)}</b></div>
+        <div><span>${t.fileNo}</span><b>${esc(r.file_number||'—')}</b></div>
+        <div><span>${t.testDate}</span><b>${esc(r.test_date)}</b></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="color:#0e7c6b;font-size:15px">${t.results}</h3>
+      <table>
+        <thead><tr><th>${t.test}</th><th>${t.value}</th><th>${t.unit}</th><th>${t.range}</th></tr></thead>
+        <tbody>${rows || `<tr><td colspan="4" style="text-align:center">${t.noDetails}</td></tr>`}</tbody>
+      </table>
+      ${r.notes ? `<div class="notes"><b>${t.notes}:</b> ${esc(r.notes)}</div>` : ''}
+      <button class="btn" onclick="window.print()">${t.print}</button>
+    </div>
+    <footer>${t.footer1}<br>${t.footer2}</footer>`;
+}
+
+window.toggleLang = () => {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  const t = T[currentLang];
+  document.getElementById('langBtn').textContent = t.btn;
+  document.getElementById('h1').textContent = t.title;
+  document.getElementById('subtitle').textContent = t.subtitle;
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  document.body.classList.toggle('en', currentLang === 'en');
+  if (reportData) renderReport();
+  else document.getElementById('loadingText').textContent = t.loading;
+};
+
+if (!token || !UUID.test(token)) {
+  errorPage(T[currentLang].invalidLink);
+} else {
+  const { data, error } = await sb.rpc('get_report', { p_token: token });
+  if (error) errorPage(T[currentLang].connError);
+  else if (!data || data.length === 0) errorPage(T[currentLang].noResult);
+  else {
+    reportData = data[0];
+    renderReport();
+  }
+}
 </script>
 </body>
 </html>
