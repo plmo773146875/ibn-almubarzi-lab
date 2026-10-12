@@ -56,7 +56,9 @@ h2 span{color:#0e7c6b}
 .card p{font-size:13px;color:#7b8b95;margin-bottom:12px}
 .cta{color:#25D366;font-weight:700;font-size:13px}
 .tests-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.test-item{background:#f4f9f8;border:1px solid #e8f4f2;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.test-item{background:#f4f9f8;border:1px solid #e8f4f2;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;font-size:13px;transition:.25s;cursor:pointer;text-decoration:none;color:inherit}
+.test-item:hover{background:#e8f4f2;border-color:#25b39a;transform:translateX(-3px);box-shadow:0 4px 12px rgba(14,124,107,.15)}
+.test-item:active{transform:scale(.98)}
 .test-name{font-weight:700}
 .test-code{color:#0e7c6b;font-size:11px;font-family:monospace;background:#fff;padding:2px 8px;border-radius:6px}
 .price-table{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(14,124,107,.08);border:1px solid #e8f4f2;max-width:700px;margin:0 auto}
@@ -127,6 +129,7 @@ body.dark .card h3{color:#e3ebee}
 body.dark .card p{color:#9fb0b6}
 body.dark .ic{background:#1a3238}
 body.dark .test-item{background:#132328;border-color:#1e3a42;color:#e3ebee}
+body.dark .test-item:hover{background:#1e3a42;border-color:#25b39a}
 body.dark .test-code{background:#1a3238;color:#25b39a}
 body.dark .price-table{background:#132328;border-color:#1e3a42}
 body.dark .price-row{border-color:#1e3a42}
@@ -224,28 +227,28 @@ body.dark footer{background:#08100f}
 <section id="tests">
 <span class="tag">🧪 جميع التحاليل</span>
 <h2>التحاليل <span>المتوفرة</span></h2>
-<p class="sub">أكثر من 100 نوع من التحاليل الطبية</p>
+<p class="sub">اضغط على أي تحليل لحجزه عبر واتساب</p>
 <div class="tests-grid">
-<div class="test-item"><span class="test-name">صورة دم كاملة</span><span class="test-code">CBC</span></div>
-<div class="test-item"><span class="test-name">الهيموغلوبين</span><span class="test-code">Hb</span></div>
-<div class="test-item"><span class="test-name">كريات الدم البيضاء</span><span class="test-code">WBC</span></div>
-<div class="test-item"><span class="test-name">الصفائح الدموية</span><span class="test-code">PLT</span></div>
-<div class="test-item"><span class="test-name">سكر الدم الصائم</span><span class="test-code">FBS</span></div>
-<div class="test-item"><span class="test-name">السكر التراكمي</span><span class="test-code">HbA1c</span></div>
-<div class="test-item"><span class="test-name">الكوليسترول</span><span class="test-code">Chol</span></div>
-<div class="test-item"><span class="test-name">الدهون الثلاثية</span><span class="test-code">TG</span></div>
-<div class="test-item"><span class="test-name">وظائف الكلى</span><span class="test-code">Cr</span></div>
-<div class="test-item"><span class="test-name">اليوريا</span><span class="test-code">Urea</span></div>
-<div class="test-item"><span class="test-name">وظائف الكبد</span><span class="test-code">ALT/AST</span></div>
-<div class="test-item"><span class="test-name">هرمون الغدة الدرقية</span><span class="test-code">TSH</span></div>
-<div class="test-item"><span class="test-name">هرمون T3 / T4</span><span class="test-code">T3/T4</span></div>
-<div class="test-item"><span class="test-name">فيتامين د</span><span class="test-code">Vit D</span></div>
-<div class="test-item"><span class="test-name">فيتامين ب12</span><span class="test-code">B12</span></div>
-<div class="test-item"><span class="test-name">مخزون الحديد</span><span class="test-code">Ferritin</span></div>
-<div class="test-item"><span class="test-name">الكالسيوم</span><span class="test-code">Ca</span></div>
-<div class="test-item"><span class="test-name">حمض اليوريك</span><span class="test-code">Uric</span></div>
-<div class="test-item"><span class="test-name">تحليل الحمل</span><span class="test-code">HCG</span></div>
-<div class="test-item"><span class="test-name">مزرعة البول</span><span class="test-code">C/S</span></div>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%B5%D9%88%D8%B1%D8%A9%20%D8%AF%D9%85%20%D9%83%D8%A7%D9%85%D9%84%D8%A9" target="_blank"><span class="test-name">صورة دم كاملة</span><span class="test-code">CBC</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%87%D9%8A%D9%85%D9%88%D8%BA%D9%84%D9%88%D8%A8%D9%8A%D9%86" target="_blank"><span class="test-name">الهيموغلوبين</span><span class="test-code">Hb</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%83%D8%B1%D9%8A%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%85%20%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1" target="_blank"><span class="test-name">كريات الدم البيضاء</span><span class="test-code">WBC</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B5%D9%81%D8%A7%D8%A6%D8%AD%20%D8%A7%D9%84%D8%AF%D9%85%D9%88%D9%8A%D8%A9" target="_blank"><span class="test-name">الصفائح الدموية</span><span class="test-code">PLT</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%B3%D9%83%D8%B1%20%D8%A7%D9%84%D8%AF%D9%85%20%D8%A7%D9%84%D8%B5%D8%A7%D8%A6%D9%85" target="_blank"><span class="test-name">سكر الدم الصائم</span><span class="test-code">FBS</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%83%D8%B1%20%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D9%83%D9%85%D9%8A" target="_blank"><span class="test-name">السكر التراكمي</span><span class="test-code">HbA1c</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%83%D9%88%D9%84%D9%8A%D8%B3%D8%AA%D8%B1%D9%88%D9%84" target="_blank"><span class="test-name">الكوليسترول</span><span class="test-code">Chol</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%AF%D9%87%D9%88%D9%86%20%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB%D9%8A%D8%A9" target="_blank"><span class="test-name">الدهون الثلاثية</span><span class="test-code">TG</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D9%83%D9%84%D9%89" target="_blank"><span class="test-name">وظائف الكلى</span><span class="test-code">Cr</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%8A%D9%88%D8%B1%D9%8A%D8%A7" target="_blank"><span class="test-name">اليوريا</span><span class="test-code">Urea</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D9%83%D8%A8%D8%AF" target="_blank"><span class="test-name">وظائف الكبد</span><span class="test-code">ALT/AST</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%87%D8%B1%D9%85%D9%88%D9%86%20%D8%A7%D9%84%D8%BA%D8%AF%D8%A9%20%D8%A7%D9%84%D8%AF%D8%B1%D9%82%D9%8A%D8%A9" target="_blank"><span class="test-name">هرمون الغدة الدرقية</span><span class="test-code">TSH</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%87%D8%B1%D9%85%D9%88%D9%86%20T3%20%D9%88%20T4" target="_blank"><span class="test-name">هرمون T3 / T4</span><span class="test-code">T3/T4</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%81%D9%8A%D8%AA%D8%A7%D9%85%D9%8A%D9%86%20%D8%AF" target="_blank"><span class="test-name">فيتامين د</span><span class="test-code">Vit D</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%81%D9%8A%D8%AA%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%A1%D9%A2" target="_blank"><span class="test-name">فيتامين ب12</span><span class="test-code">B12</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%85%D8%AE%D8%B2%D9%88%D9%86%20%D8%A7%D9%84%D8%AD%D8%AF%D9%8A%D8%AF" target="_blank"><span class="test-name">مخزون الحديد</span><span class="test-code">Ferritin</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%83%D8%A7%D9%84%D8%B3%D9%8A%D9%88%D9%85" target="_blank"><span class="test-name">الكالسيوم</span><span class="test-code">Ca</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%AD%D9%85%D8%B6%20%D8%A7%D9%84%D9%8A%D9%88%D8%B1%D9%8A%D9%83" target="_blank"><span class="test-name">حمض اليوريك</span><span class="test-code">Uric</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%AA%D8%AD%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AD%D9%85%D9%84" target="_blank"><span class="test-name">تحليل الحمل</span><span class="test-code">HCG</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D9%85%D8%B2%D8%B1%D8%B9%D8%A9%20%D8%A7%D9%84%D8%A8%D9%88%D9%84" target="_blank"><span class="test-name">مزرعة البول</span><span class="test-code">C/S</span></a>
 </div>
 </section>
 
@@ -325,4 +328,126 @@ body.dark footer{background:#08100f}
 <label class="calc-item"><input type="checkbox" data-price="8000" data-name="فيتامين د" onchange="updateCalc()"> <span>فيتامين د — 8,000</span></label>
 <label class="calc-item"><input type="checkbox" data-price="7000" data-name="فيتامين ب12" onchange="updateCalc()"> <span>فيتامين ب12 — 7,000</span></label>
 </div>
-<div class="
+<div class="calc-total">
+<div class="label">المجموع التقريبي</div>
+<div class="amount" id="calcAmount">0 ريال</div>
+<button class="calc-btn" onclick="orderCalc()">📲 اطلب الآن عبر واتساب</button>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<span class="tag">❓ أسئلة شائعة</span>
+<h2>الأسئلة <span>الشائعة</span></h2>
+<p class="sub">إجابات لأكثر ما يسأل عنه مرضانا</p>
+<div class="faq">
+<details class="faq-item">
+<summary>كم يستغرق ظهور نتيجة الفحص؟</summary>
+<p>عادة خلال 24 ساعة. بعض التحاليل السريعة تظهر خلال ساعات، والمزارع قد تستغرق 3-5 أيام.</p>
+</details>
+<details class="faq-item">
+<summary>هل النتائج سرية؟</summary>
+<p>نعم، كل مريض يستلم رابطاً خاصاً به فقط، ولا يمكن لأي شخص آخر الوصول إلى نتائجه.</p>
+</details>
+<details class="faq-item">
+<summary>هل أحتاج حجزاً مسبقاً؟</summary>
+<p>يمكنك الحضور مباشرة أو الحجز عبر واتساب لتجنب الانتظار.</p>
+</details>
+<details class="faq-item">
+<summary>كيف أستلم النتيجة؟</summary>
+<p>عبر رابط خاص يُرسل لك على واتساب. اضغط الرابط لترى نتيجتك مباشرة.</p>
+</details>
+<details class="faq-item">
+<summary>هل تحتاج صياماً قبل التحليل؟</summary>
+<p>يعتمد على نوع التحليل. تحاليل السكر والدهون تحتاج صيام 8-12 ساعة.</p>
+</details>
+<details class="faq-item">
+<summary>هل لديكم خدمة السحب المنزلي؟</summary>
+<p>نعم، نوفر خدمة السحب المنزلي في صنعاء وسعوان وما حولها.</p>
+</details>
+</div>
+</section>
+
+<section>
+<span class="tag">🤝 شركاؤنا</span>
+<h2>شركاء <span>النجاح</span></h2>
+<p class="sub">نفتخر بثقة شركائنا في القطاع الصحي</p>
+<div class="partners">
+<div class="partner"><div class="partner-icon">🏥</div><div class="partner-name">مستشفى ابن المبرزي</div><div class="partner-type">شريك رئيسي</div></div>
+<div class="partner"><div class="partner-icon">🩺</div><div class="partner-name">عيادات الشفاء</div><div class="partner-type">شريك صحي</div></div>
+<div class="partner"><div class="partner-icon">💊</div><div class="partner-name">صيدلية النور</div><div class="partner-type">شريك دوائي</div></div>
+<div class="partner"><div class="partner-icon">🧬</div><div class="partner-name">مركز الأمل</div><div class="partner-type">شريك تشخيصي</div></div>
+</div>
+</section>
+
+<section>
+<div class="home-service">
+<div class="hs-icon">🏠</div>
+<h2>خدمة السحب المنزلي</h2>
+<p>لا تحتاج مغادرة منزلك! نأتي إليك لسحب العينة في الوقت المناسب لك</p>
+<div class="hs-info">
+<div>📍 نخدم: صنعاء - سعوان</div>
+<div>💰 السعر: 3,000 ريال</div>
+<div>⏰ متاح يومياً</div>
+</div>
+<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D8%AD%D8%A8%20%D8%A7%D9%84%D9%85%D9%86%D8%B2%D9%84%D9%8A" target="_blank" class="hs-btn">🏠 احجز زيارتك المنزلية</a>
+</div>
+</section>
+
+<section id="contact">
+<div class="contact">
+<h2>تواصل معنا</h2>
+<p>احجز فحصك أو استفسر عن أي شيء — نحن في خدمتك</p>
+<a href="https://wa.me/967773146875" class="cbtn cbtn-1">💬 محادثة واتساب</a>
+<a href="tel:+967773146875" class="cbtn cbtn-2">📞 اتصل بنا</a>
+</div>
+</section>
+
+<footer>
+© 2026 مختبرات مستشفى ابن المبرزي التخصصي — <span class="hl">جميع الحقوق محفوظة</span>
+<span class="cl">مشروع اختبار نهائي — كلية رواد النهضة</span>
+</footer>
+
+<a href="https://wa.me/967773146875" class="float" target="_blank" title="تواصل عبر واتساب">💬</a>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+(function(){
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    document.getElementById('themeBtn').textContent = '☀️';
+  }
+})();
+
+function updateCalc(){
+  let total = 0;
+  document.querySelectorAll('.calc-item input:checked').forEach(function(cb){
+    total += parseInt(cb.dataset.price);
+    cb.parentElement.classList.add('checked');
+  });
+  document.querySelectorAll('.calc-item input:not(:checked)').forEach(function(cb){
+    cb.parentElement.classList.remove('checked');
+  });
+  document.getElementById('calcAmount').textContent = total.toLocaleString('ar-EG') + ' ريال';
+}
+
+function orderCalc(){
+  let items = [];
+  let total = 0;
+  document.querySelectorAll('.calc-item input:checked').forEach(function(cb){
+    items.push(cb.dataset.name);
+    total += parseInt(cb.dataset.price);
+  });
+  if (items.length === 0) { alert('⚠ اختر تحليلاً واحداً على الأقل'); return; }
+  const msg = '🏥 مختبرات مستشفى ابن المبرزي\n\nأرغب في حجز التحاليل التالية:\n' + items.map(function(i){return '• ' + i;}).join('\n') + '\n\n💰 المجموع: ' + total.toLocaleString('ar-EG') + ' ريال';
+  window.open('https://wa.me/967773146875?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+
+</body>
+</html>
