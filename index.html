@@ -17,9 +17,9 @@ html{scroll-behavior:smooth}
 body{font-family:'Cairo',Tahoma,sans-serif;color:#1c2b33;line-height:1.8;background:#fff;transition:background .3s,color .3s;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 
-/* ===== شريط الأخبار — سرعة متوسطة وسلسة ===== */
+/* ===== شريط الأخبار — من اليمين لليسار وبسرعة هادئة ===== */
 .announce{background:linear-gradient(90deg,#f0b429,#f5c542,#f0b429);color:#1c2b33;padding:12px 0;font-weight:700;font-size:14px;overflow:hidden;position:relative;direction:rtl}
-.announce-track{display:inline-flex;white-space:nowrap;animation:marquee 25s linear infinite;direction:rtl}
+.announce-track{display:inline-flex;white-space:nowrap;animation:marquee 35s linear infinite;direction:rtl}
 .announce-track span{padding-inline-end:80px;font-weight:700;display:inline-block}
 .announce-track span::before{content:'◆';color:#0e7c6b;margin-inline-end:12px;font-size:12px}
 @keyframes marquee{
@@ -125,15 +125,6 @@ h2 span{background:linear-gradient(135deg,#0e7c6b,#25b39a);-webkit-background-cl
 .calc-total .amount{font-size:38px;font-weight:900;margin:8px 0;letter-spacing:-1px}
 .calc-btn{background:#25D366;color:#fff;border:none;border-radius:50px;padding:16px 32px;font-weight:900;font-size:15px;cursor:pointer;margin-top:12px;font-family:inherit;width:100%;transition:.3s;box-shadow:0 8px 20px rgba(37,211,102,.4)}
 .calc-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,.5)}
-.faq{max-width:820px;margin:0 auto}
-.faq-item{background:#fff;border:1px solid #e8f4f2;border-radius:16px;margin-bottom:14px;padding:20px 24px;cursor:pointer;transition:.3s}
-.faq-item:hover{box-shadow:0 8px 20px rgba(14,124,107,.08);border-color:#25b39a}
-.faq-item summary{font-weight:700;cursor:pointer;color:#1c2b33;list-style:none;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:'+';color:#0e7c6b;font-size:26px;font-weight:300;transition:.3s;flex-shrink:0;width:30px;height:30px;background:#f4f9f8;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1}
-.faq-item[open] summary::after{content:'−';background:#0e7c6b;color:#fff}
-.faq-item[open]{background:linear-gradient(135deg,#fff,#f4f9f8);border-color:#0e7c6b}
-.faq-item p{margin-top:14px;font-size:14px;color:#5a6b75;line-height:1.9;padding-top:14px;border-top:1px dashed #e8f4f2}
 .partners{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
 .partner{background:linear-gradient(135deg,#fff,#f4f9f8);border:1px solid #e8f4f2;border-radius:18px;padding:26px 20px;text-align:center;transition:.3s}
 .partner:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(14,124,107,.15);border-color:#25b39a}
@@ -173,9 +164,9 @@ body.dark .brand-text .l1{color:#25b39a}
 body.dark nav a{color:#9fb0b6}
 body.dark nav a:hover{color:#25b39a}
 body.dark .theme-btn{background:#132328;border-color:#1e3a42;color:#25b39a}
-body.dark .why-card,body.dark .card,body.dark .review,body.dark .feature,body.dark .faq-item,body.dark .partner{background:#132328;border-color:#1e3a42;color:#e3ebee}
+body.dark .why-card,body.dark .card,body.dark .review,body.dark .feature,body.dark .partner{background:#132328;border-color:#1e3a42;color:#e3ebee}
 body.dark .why-card h3,body.dark .card h3,body.dark .feature h4,body.dark .partner-name{color:#e3ebee}
-body.dark .why-card p,body.dark .card p,body.dark .feature p,body.dark .review-text,body.dark .faq-item p{color:#9fb0b6}
+body.dark .why-card p,body.dark .card p,body.dark .feature p,body.dark .review-text{color:#9fb0b6}
 body.dark .ic{background:#1a3238}
 body.dark .test-item{background:#132328;border-color:#1e3a42;color:#e3ebee}
 body.dark .test-item:hover{background:#1e3a42}
@@ -189,10 +180,6 @@ body.dark .price-bundle h4,body.dark .price-bundle strong{color:#25b39a}
 body.dark .calc{background:linear-gradient(135deg,#132328,#1a3238);border-color:#25b39a}
 body.dark .calc-item{background:#0d1619;color:#e3ebee}
 body.dark .calc-item.checked{background:#1e3a42}
-body.dark .faq-item summary{color:#e3ebee}
-body.dark .faq-item summary::after{background:#1a3238;color:#25b39a}
-body.dark .faq-item[open]{background:linear-gradient(135deg,#132328,#1a3238)}
-body.dark .faq-item p{border-top-color:#1e3a42}
 body.dark .tag{background:#132328;color:#25b39a}
 body.dark h2{color:#e3ebee}
 body.dark .sub{color:#8b9ba3}
@@ -283,7 +270,6 @@ body.dark .guide-back{background:#1a3238;color:#25b39a}
 <a href="#services">الخدمات</a>
 <a href="#tests">التحاليل</a>
 <a href="#prices">الأسعار</a>
-<a href="#faq">أسئلة</a>
 <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
 </nav>
 </div>
@@ -350,7 +336,7 @@ body.dark .guide-back{background:#1a3238;color:#25b39a}
 <a class="test-item" href="https://wa.me/967773146875?text=%D8%B5%D9%88%D8%B1%D8%A9%20%D8%AF%D9%85%20%D9%83%D8%A7%D9%85%D9%84%D8%A9" target="_blank"><span class="test-name">صورة دم كاملة</span><span class="test-code">CBC</span></a>
 <a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%87%D9%8A%D9%85%D9%88%D8%BA%D9%84%D9%88%D8%A8%D9%8A%D9%86" target="_blank"><span class="test-name">الهيموغلوبين</span><span class="test-code">Hb</span></a>
 <a class="test-item" href="https://wa.me/967773146875?text=%D9%83%D8%B1%D9%8A%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%85%20%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1" target="_blank"><span class="test-name">كريات الدم البيضاء</span><span class="test-code">WBC</span></a>
-<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B5%D9%81%D8%A7%D8%A6%D8%AD%20%D8%A7%D9%84%D8%AF%D9%85%D9%88%D9%8A%D8%A9" target="_blank"><span class="test-name">الصفائح الدموية</span><span class="test-code">PLT</span></a>
+<a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B5%D9%81%D8%A7%D8%A6%D8%AD%20%D8%A7%D9%84%D8%AF%D9%85%20%D9%88%D9%8A%D8%A9" target="_blank"><span class="test-name">الصفائح الدموية</span><span class="test-code">PLT</span></a>
 <a class="test-item" href="https://wa.me/967773146875?text=%D8%B3%D9%83%D8%B1%20%D8%A7%D9%84%D8%AF%D9%85%20%D8%A7%D9%84%D8%B5%D8%A7%D8%A6%D9%85" target="_blank"><span class="test-name">سكر الدم الصائم</span><span class="test-code">FBS</span></a>
 <a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%83%D8%B1%20%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D9%83%D9%85%D9%8A" target="_blank"><span class="test-name">السكر التراكمي</span><span class="test-code">HbA1c</span></a>
 <a class="test-item" href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%83%D9%88%D9%84%D9%8A%D8%B3%D8%AA%D8%B1%D9%88%D9%84" target="_blank"><span class="test-name">الكوليسترول</span><span class="test-code">Chol</span></a>
@@ -442,20 +428,6 @@ body.dark .guide-back{background:#1a3238;color:#25b39a}
 </div>
 </section>
 
-<section id="faq">
-<span class="tag">❓ أسئلة شائعة</span>
-<h2>الأسئلة <span>الشائعة</span></h2>
-<p class="sub">إجابات لأكثر ما يسأل عنه مرضانا</p>
-<div class="faq">
-<details class="faq-item"><summary>كم يستغرق ظهور نتيجة الفحص؟</summary><p>عادة خلال 24 ساعة. بعض التحاليل السريعة تظهر خلال ساعات، والمزارع قد تستغرق 3-5 أيام.</p></details>
-<details class="faq-item"><summary>هل النتائج سرية؟</summary><p>نعم، كل مريض يستلم رابطاً خاصاً به فقط، ولا يمكن لأي شخص آخر الوصول إلى نتائجه.</p></details>
-<details class="faq-item"><summary>هل أحتاج حجزاً مسبقاً؟</summary><p>يمكنك الحضور مباشرة أو الحجز عبر واتساب لتجنب الانتظار.</p></details>
-<details class="faq-item"><summary>كيف أستلم النتيجة؟</summary><p>عبر رابط خاص يُرسل لك على واتساب. اضغط الرابط لترى نتيجتك مباشرة.</p></details>
-<details class="faq-item"><summary>هل تحتاج صياماً قبل التحليل؟</summary><p>يعتمد على نوع التحليل. تحاليل السكر والدهون تحتاج صيام 8-12 ساعة.</p></details>
-<details class="faq-item"><summary>هل لديكم خدمة السحب المنزلي؟</summary><p>نعم، نوفر خدمة السحب المنزلي في صنعاء وسعوان وما حولها.</p></details>
-</div>
-</section>
-
 <section>
 <span class="tag">🤝 شركاؤنا</span>
 <h2>شركاء <span>النجاح</span></h2>
@@ -509,7 +481,7 @@ body.dark .guide-back{background:#1a3238;color:#25b39a}
 <button onclick="closeGuide(event)" class="guide-close">✕</button>
 </div>
 <div class="guide-body" id="guideBody">
-<div class="guide-msg">👋 مرحباً بك في مختبرات مستشفى ابن المبرزي التخصصي! إليك الأسئلة الشائعة، انقر على أي سؤال لتظهر لك إجابته الفورية:</div>
+<div class="guide-msg">👋 مرحباً بك في مختبرات مستشفى ابن المبرزي التخصصي! إليك الأسئلة الشائعة (20 سؤالاً وجواباً)، انقر على أي سؤال لتظهر لك إجابته الفورية:</div>
 <div class="guide-options" id="guideOptions"></div>
 </div>
 </div>
@@ -558,7 +530,21 @@ const FAQ = [
   { icon:'📱', q:'كيف أستلم نتيجة الفحص؟', a:'يتم إرسال رابط آمن وخاص بنتيجة فحصك مباشرة إلى رقم الواتساب الخاص بك بكل سرية وخصوصية تامة.' },
   { icon:'🏠', q:'هل تتوفر خدمة السحب المنزلي؟', a:'نعم، نوفر خدمة السحب المنزلي في العاصمة صنعاء ومنطقة سعوان وما حولها بكل راحة وسهولة.' },
   { icon:'💰', q:'هل الأسعار منافسة؟', a:'نعم، نقدم أفضل الأسعار التقريبية المنافسة مع الالتزام بأعلى معايير الجودة الطبية والدقة التشخيصية.' },
-  { icon:'💬', q:'كيف يمكنني الحجز أو التواصل؟', a:'يمكنك الضغط على أزرار الواتساب المتاحة في الموقع للتواصل المباشر مع فريقنا الطبي وحجز موعدك فوراً.' }
+  { icon:'💬', q:'كيف يمكنني الحجز أو التواصل؟', a:'يمكنك الضغط على أزرار الواتساب المتاحة في الموقع للتواصل المباشر مع فريقنا الطبي وحجز موعدك فوراً.' },
+  { icon:'📍', q:'أين يقع موقع المختبر بالتحديد؟', a:'نتواجد في العاصمة صنعاء، منطقة سعوان، خلف مدرسة اليرموك.' },
+  { icon:'⏰', q:'ما هي أوقات العمل الرسمية؟', a:'نستقبلكم طوال أيام الأسبوع على مدار 24 ساعة في قسم الطوارئ والخدمات المخبرية.' },
+  { icon:'🔬', q:'هل الأجهزة الطبية معتمدة؟', a:'نعم، جميع أجهزتنا حديثة ومستوردة ومعتمدة دولياً ويتم معايرتها دورياً لضمان الدقة المطلقة.' },
+  { icon:'📦', q:'هل توجد باقات مخفضة للفحوصات الشاملة؟', a:'نعم، لدينا باقة الفحص الشامل وباقة السكري وباقة الحمل بأسعار تنافسية ممتازة.' },
+  { icon:'👵', q:'هل يمكنني طلب فحص منزلي لكبار السن؟', a:'بالتأكيد، نوفر طاقماً مختصاً للسحب المنزلي لخدمة كبار السن وذوي الاحتياجات الخاصة بكل عناية.' },
+  { icon:'🔒', q:'كيف أتأكد من صحة التقرير الطبي؟', a:'كل تقرير يحمل كود تحقق إلكتروني خاص ورابط رسمي آمن لا يمكن تزويره.' },
+  { icon:'🧪', q:'ما هي شروط فحص السكر الصائم؟', a:'يتطلب صياماً يتراوح بين 8 إلى 12 ساعة مع إمكانية شرب الماء بشكل طبيعي.' },
+  { icon:'☀️', q:'هل يتوفر فحص فيتامين د وب12؟', a:'نعم، يتوفران بأدق الأجهزة المخبرية وبنتائج دقيقة للغاية وموثوقة.' },
+  { icon:'🎓', q:'هل توجد خصومات للطلاب والجهات التعليمية؟', a:'نعم، نقدم عروضاً خاصة وتسهيلات لطلبة القطاع الصحي والتعليمي تكرس دعمنا لهم.' },
+  { icon:'💳', q:'هل يمكن دفع التكاليف إلكترونياً؟', a:'نعم، تتوفر لدينا وسائل الدفع المتاحة والميسرة بالعملة المحلية.' },
+  { icon:'🧬', q:'هل تتطلب فحوصات الهرمونات تحضيرات خاصة؟', a:'بعض هرمونات الغدة الدرقية والخصوبة تتطلب سحب الدم في ساعات الصباح الباكر.' },
+  { icon:'💡', q:'هل نقدم استشارات طبية مجانية مع التحاليل؟', a:'نعم، يرافق تسليم النتائج توضيح فني مبسط للمستويات الطبيعية للمريض.' },
+  { icon:'🚑', q:'كيف يتم التواصل عند الطوارئ؟', a:'عبر رقم الواتساب المباشر المتاح على مدار الساعة في الموقع لخدمة الحالات الطارئة.' },
+  { icon:'⭐', q:'لماذا نختار مختبرات مستشفى ابن المبرزي؟', a:'لأننا نجمع بين الدقة العالية، السرعة القياسية، والأسعار المناسبة لخدمة مجتمعنا بكل أمانة.' }
 ];
 
 function openGuide(){
@@ -570,7 +556,7 @@ function closeGuide(e){
 }
 function renderGuideHome(){
   const body = document.getElementById('guideBody');
-  let html = '<div class="guide-msg">👋 مرحباً بك في مختبرات مستشفى ابن المبرزي التخصصي! إليك الأسئلة الشائعة، انقر على أي سؤال لتظهر لك إجابته الفورية:</div><div class="guide-options">';
+  let html = '<div class="guide-msg">👋 مرحباً بك في مختبرات مستشفى ابن المبرزي التخصصي! إليك الأسئلة الشائعة (20 سؤالاً وجواباً)، انقر على أي سؤال لتظهر لك إجابته الفورية:</div><div class="guide-options">';
   FAQ.forEach(function(item, idx){
     html += '<button onclick="showGuideAnswer(' + idx + ')">' + item.icon + ' ' + item.q + '</button>';
   });
