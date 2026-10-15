@@ -17,14 +17,14 @@ html{scroll-behavior:smooth}
 body{font-family:'Cairo',Tahoma,sans-serif;color:#1c2b33;line-height:1.8;background:#fff;transition:background .3s,color .3s;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 
-/* ===== شريط الأخبار — من اليمين لليسار ===== */
+/* ===== شريط الأخبار — سرعة متوسطة وسلسة ===== */
 .announce{background:linear-gradient(90deg,#f0b429,#f5c542,#f0b429);color:#1c2b33;padding:12px 0;font-weight:700;font-size:14px;overflow:hidden;position:relative;direction:rtl}
-.announce-track{display:inline-flex;white-space:nowrap;animation:marquee 40s linear infinite;direction:rtl}
+.announce-track{display:inline-flex;white-space:nowrap;animation:marquee 25s linear infinite;direction:rtl}
 .announce-track span{padding-inline-end:80px;font-weight:700;display:inline-block}
 .announce-track span::before{content:'◆';color:#0e7c6b;margin-inline-end:12px;font-size:12px}
 @keyframes marquee{
-  0%{transform:translateX(-100%)}
-  100%{transform:translateX(100%)}
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 .announce:hover .announce-track{animation-play-state:paused}
 
@@ -509,7 +509,7 @@ body.dark .guide-back{background:#1a3238;color:#25b39a}
 <button onclick="closeGuide(event)" class="guide-close">✕</button>
 </div>
 <div class="guide-body" id="guideBody">
-<div class="guide-msg">👋 مرحباً بك! اختر سؤالاً من القائمة:</div>
+<div class="guide-msg">👋 مرحباً بك في مختبرات مستشفى ابن المبرزي التخصصي! إليك الأسئلة الشائعة، انقر على أي سؤال لتظهر لك إجابته الفورية:</div>
 <div class="guide-options" id="guideOptions"></div>
 </div>
 </div>
@@ -553,4 +553,38 @@ function orderCalc(){
 }
 
 const FAQ = [
-  { icon:'🩸', q:'ما هي التحاليل المتوفرة؟', a:'نوفر أكثر من 100 تحليل:<br>• <b>الدم:</b> CBC, Hb, WBC, PLT<br>• <b>السكر:</b> FBS, HbA1c<br>• <b>الدهون:</b> Chol, TG<br>• <b>الهرمونات:</b> TSH, T3, T4<br>• <b>
+  { icon:'🩸', q:'ما هي التحاليل المتوفرة لديكم؟', a:'نوفر كافة التحاليل الطبية الشاملة والدقيقة: صورة الدم الكاملة (CBC)، السكر، الهرمونات (الغدة الدرقية)، الكوليسترول، الدهون الثلاثية، وظائف الكبد والكلى، وفيتامينات د وب12.' },
+  { icon:'⏰', q:'كم يستغرق ظهور نتيجة الفحص؟', a:'عادة تظهر النتائج خلال 24 ساعة كحد أقصى، والتحاليل السريعة تظهر خلال ساعات معدودة، بينما المزارع المخبرية تستغرق 3-5 أيام.' },
+  { icon:'📱', q:'كيف أستلم نتيجة الفحص؟', a:'يتم إرسال رابط آمن وخاص بنتيجة فحصك مباشرة إلى رقم الواتساب الخاص بك بكل سرية وخصوصية تامة.' },
+  { icon:'🏠', q:'هل تتوفر خدمة السحب المنزلي؟', a:'نعم، نوفر خدمة السحب المنزلي في العاصمة صنعاء ومنطقة سعوان وما حولها بكل راحة وسهولة.' },
+  { icon:'💰', q:'هل الأسعار منافسة؟', a:'نعم، نقدم أفضل الأسعار التقريبية المنافسة مع الالتزام بأعلى معايير الجودة الطبية والدقة التشخيصية.' },
+  { icon:'💬', q:'كيف يمكنني الحجز أو التواصل؟', a:'يمكنك الضغط على أزرار الواتساب المتاحة في الموقع للتواصل المباشر مع فريقنا الطبي وحجز موعدك فوراً.' }
+];
+
+function openGuide(){
+  document.getElementById('guideOverlay').classList.add('show');
+  renderGuideHome();
+}
+function closeGuide(e){
+  document.getElementById('guideOverlay').classList.remove('show');
+}
+function renderGuideHome(){
+  const body = document.getElementById('guideBody');
+  let html = '<div class="guide-msg">👋 مرحباً بك في مختبرات مستشفى ابن المبرزي التخصصي! إليك الأسئلة الشائعة، انقر على أي سؤال لتظهر لك إجابته الفورية:</div><div class="guide-options">';
+  FAQ.forEach(function(item, idx){
+    html += '<button onclick="showGuideAnswer(' + idx + ')">' + item.icon + ' ' + item.q + '</button>';
+  });
+  html += '</div><a href="https://wa.me/967773146875" target="_blank" class="guide-contact">💬 تواصل مباشر عبر واتساب</a>';
+  body.innerHTML = html;
+}
+function showGuideAnswer(idx){
+  const item = FAQ[idx];
+  const body = document.getElementById('guideBody');
+  let html = '<div class="guide-answer"><strong>' + item.icon + ' ' + item.q + '</strong><br><br>' + item.a + '</div>';
+  html += '<a href="https://wa.me/967773146875?text=' + encodeURIComponent('استفسار بخصوص: ' + item.q) + '" target="_blank" class="guide-contact">💬 اسأل عن هذا عبر واتساب</a>';
+  html += '<button class="guide-back" onclick="renderGuideHome()">← العودة للأسئلة</button>';
+  body.innerHTML = html;
+}
+</script>
+</body>
+</html>
