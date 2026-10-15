@@ -17,238 +17,270 @@
 
     <link href="https://ibn-almbrzy-lap.vercel.app/" rel="canonical">
     <link href="about:invalid#zCSafez" rel="icon">
-    <link rel="stylesheet" href="#"> <!-- استبدله بملف الـ CSS الخاص بك إن وجد -->
+    
+    <style>
+        /* التنسيقات والألوان الاحترافية للموقع بالكامل */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; direction: rtl; text-align: right; line-height: 1.6; }
+        
+        /* الشريط العلوي */
+        .top-ticker { background: #004d40; color: #ffca28; padding: 10px 0; font-size: 14px; font-weight: bold; overflow: hidden; white-space: nowrap; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+        .ticker-content { display: inline-block; padding-left: 100%; animation: ticker 25s linear infinite; }
+        .ticker-content span { margin-left: 40px; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(100%, 0, 0); } }
+
+        /* الهيدر والقائمة الرئيسية */
+        header { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo-box { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { font-size: 28px; background: #e0f2f1; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #004d40; }
+        .logo-text h2 { font-size: 18px; color: #004d40; margin-bottom: 2px; }
+        .logo-text span { font-size: 12px; color: #666; }
+        
+        nav { display: flex; gap: 20px; }
+        nav a { color: #004d40; text-decoration: none; font-weight: 600; font-size: 15px; transition: color 0.3s; }
+        nav a:hover { color: #00796b; }
+
+        /* الأقسام العامة */
+        section { padding: 50px 20px; max-width: 1100px; margin: auto; }
+        .sec-header { text-align: center; margin-bottom: 35px; }
+        .sec-header span { background: #e0f2f1; color: #004d40; padding: 5px 15px; border-radius: 20px; font-size: 13px; font-weight: bold; display: inline-block; margin-bottom: 8px; }
+        .sec-header h2 { font-size: 28px; color: #004d40; }
+        .sec-header h2 span { background: none; color: #00796b; padding: 0; }
+        .sec-header p { color: #666; font-size: 14px; margin-top: 5px; }
+
+        /* القسم الرئيسي (Hero) */
+        #home { background: linear-gradient(135deg, #004d40 0%, #00796b 100%); color: white; border-radius: 15px; padding: 60px 40px; margin: 30px auto; max-width: 1100px; box-shadow: 0 10px 25px rgba(0,77,64,0.2); }
+        #home h1 { font-size: 34px; margin-bottom: 15px; font-weight: 700; }
+        #home p { font-size: 16px; margin-bottom: 25px; opacity: 0.95; max-width: 700px; }
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 15px; transition: all 0.3s; }
+        .btn-main { background: #ffca28; color: #333; }
+        .btn-main:hover { background: #ffb300; transform: translateY(-2px); }
+        .btn-sec { border: 2px solid white; color: white; }
+        .btn-sec:hover { background: white; color: #004d40; }
+
+        /* شبكة الكروت (لماذا نحن والخدمات) */
+        .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 30px 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; border-top: 4px solid #00796b; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .card .icon { font-size: 36px; margin-bottom: 15px; display: inline-block; }
+        .card h3 { font-size: 18px; color: #004d40; margin-bottom: 10px; }
+        .card p { font-size: 13px; color: #666; line-height: 1.5; }
+
+        /* خدمات قابلة للنقر للواتساب */
+        .service-card { background: white; padding: 25px; border-radius: 12px; text-decoration: none; color: inherit; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #004d40; transition: all 0.3s; text-align: center; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,77,64,0.15); background: #fafdfc; }
+
+        /* قائمة التحاليل والأطقم */
+        .tests-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .test-item { background: white; padding: 15px; border-radius: 8px; text-decoration: none; color: #333; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; border: 1px solid #e0e0e0; transition: all 0.2s; }
+        .test-item:hover { border-color: #00796b; background: #e0f2f1; color: #004d40; }
+
+        /* جدول الأسعار */
+        .price-table { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 850px; margin: auto; }
+        .price-row { display: flex; justify-content: space-between; padding: 14px 15px; border-bottom: 1px solid #f0f0f0; font-size: 15px; }
+        .price-row:last-child { border-bottom: none; }
+        .price-row strong { color: #00796b; }
+
+        /* قسم الأسئلة الشائعة */
+        details { background: white; padding: 18px; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); cursor: pointer; border-right: 4px solid #00796b; }
+        details summary { font-weight: bold; color: #004d40; font-size: 16px; outline: none; }
+        details p { margin-top: 10px; color: #555; font-size: 14px; }
+
+        /* قسم التواصل */
+        .contact-section { background: #004d40; color: white; border-radius: 15px; padding: 45px; text-align: center; box-shadow: 0 8px 25px rgba(0,77,64,0.2); }
+        .contact-section h2 { font-size: 26px; margin-bottom: 10px; }
+        .contact-section p { opacity: 0.9; margin-bottom: 25px; }
+        .wa-btn { background: #25D366; color: white; padding: 14px 35px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block; transition: background 0.3s; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+        .wa-btn:hover { background: #20ba5a; }
+
+        /* الفوتر */
+        footer { background: #263238; color: white; text-align: center; padding: 30px; margin-top: 60px; font-size: 14px; }
+        footer .footer-name { color: #80cbc4; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-<div>
-<div>
-<span>🔔 عرض خاص: خصم 20% على باقة الفحص الشامل هذا الشهر</span>
-<span>⭐ نرحب بكم في مختبرات مستشفى ابن المبرزي التخصصي</span>
-<span>📱 نتائج إلكترونية فورية عبر واتساب</span>
-<span>🏠 خدمة السحب المنزلي متوفرة في صنعاء وسعوان</span>
-<span>🚑 خدمة طوارئ على مدار 24 ساعة</span>
-<span>💰 أسعار منافسة وجودة عالية</span>
-</div>
+<!-- شريط الإعلانات الترحيبي المتحرك -->
+<div class="top-ticker">
+    <div class="ticker-content">
+        <span>🔔 عرض خاص: خصم 20% على باقة الفحص الشامل هذا الشهر في مختبرات مستشفى ابن المبرزي التخصصي</span>
+        <span>⭐ نرحب بكم في صرحنا الطبي - دقة في التحليل وسرعة في النتائج</span>
+        <span>📱 نتائج إلكترونية فورية وآمنة عبر واتساب</span>
+        <span>🏠 خدمة السحب المنزلي متاحة في صنعاء وسعوان</span>
+    </div>
 </div>
 
+<!-- الهيدر الاحترافي -->
 <header>
-<div>
-<div>
-<span></span>
-<span>
-<span>مختبرات مستشفى ابن المبرزي</span>
-<span>التخصصي</span>
-</span>
-</div>
-<nav>
-<a href="#services">الخدمات</a>
-<a href="#tests">التحاليل</a>
-<a href="#prices">الأسعار</a>
-<a href="#faq">أسئلة</a>
-</nav>
-</div>
+    <div class="logo-box">
+        <div class="logo-icon">🔬</div>
+        <div class="logo-text">
+            <h2>مختبرات ابن المبرزي</h2>
+            <span>التخصصي - صنعاء</span>
+        </div>
+    </div>
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#why-us">لماذا نحن</a>
+        <a href="#services">الخدمات</a>
+        <a href="#tests">التحاليل</a>
+        <a href="#prices">الأسعار</a>
+        <a href="#contact">تواصل معنا</a>
+    </nav>
 </header>
 
-<section id="home">
-<div>
-</div>
-<div>
-<div>✨ مختبر معتمد بأحدث المعايير الطبية</div>
-<h1>مختبرات مستشفى ابن المبرزي التخصصي</h1>
-<p>دقة في التحليل، سرعة في النتائج، وأمان في الوصول. احصل على نتيجة فحصك إلكترونياً عبر رابط خاص وآمن.</p>
-<div>
-<a href="#contact">احجز فحصك الآن ←</a>
-<a href="#calc">احسب تكلفتك 🧮</a>
-</div>
-</div>
+<!-- القسم الرئيسي -->
+<section id="home" style="margin-top: 40px;">
+    <div style="max-width: 700px;">
+        <span style="background: rgba(255,255,255,0.2); padding: 6px 15px; border-radius: 20px; font-size: 13px; font-weight: bold; display: inline-block; margin-bottom: 15px;">✨ معتمد بأحدث المعايير الطبية العالمية</span>
+        <h1>مختبرات مستشفى ابن المبرزي التخصصي</h1>
+        <p>نقدم أحدث التحاليل الطبية الشاملة والدقيقة بأجهزة مخبرية متطورة. احصل على نتيجتك الطبية بكل أمان وخصوصية عبر رابط واتساب فور اعتمادها.</p>
+        <div class="hero-btns">
+            <a href="https://wa.me/967773146875?text=مرحباً، أريد حجز موعد لفحص طبي" target="_blank" class="btn btn-main">احجز فحصك الآن عبر واتساب</a>
+            <a href="#services" class="btn btn-sec">استعرض الخدمات الطبية</a>
+        </div>
+    </div>
 </section>
 
+<!-- لماذا تختارنا -->
 <section id="why-us">
-<span>✨ لماذا نحن؟</span>
-<h2>لماذا <span>تختارنا؟</span></h2>
-<p>ميزات حقيقية تميزنا</p>
-<div>
-<div><span>🔬</span><h3>أجهزة حديثة</h3><p>معتمدة دولياً ومعايرة دورياً</p></div>
-<div><span>⚡</span><h3>نتائج سريعة</h3><p>خلال 24 ساعة أو أقل</p></div>
-<div><span>📱</span><h3>إشعار واتساب</h3><p>النتيجة تصلك فوراً</p></div>
-<div><span>🔒</span><h3>خصوصية تامة</h3><p>رابط خاص لكل مريض</p></div>
-</div>
+    <div class="sec-header">
+        <span>✨ مميزاتنا</span>
+        <h2>لماذا <span>تختارنا؟</span></h2>
+        <p>نلتزم بمعايير الجودة والدقة لضمان سلامتك وصحتك</p>
+    </div>
+    <div class="grid-box">
+        <div class="card">
+            <div class="icon">🔬</div>
+            <h3>أجهزة حديثة</h3>
+            <p>مختبرات مجهزة بأحدث التقنيات الطبية والمعايرة بصفة دورية.</p>
+        </div>
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>نتائج سريعة</h3>
+            <p>إنجاز الفحوصات وإصدار التقارير الطبية خلال 24 ساعة أو أقل.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>تنبيه واتساب</h3>
+            <p>تصلك نتيجة فحصك فوراً عبر رابط آمن وخاص بك على واتساب.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🔒</div>
+            <h3>خصوصية تامة</h3>
+            <p>حماية كاملة لسرية بياناتك وتقاريرك الطبية بأعلى معايير الأمان.</p>
+        </div>
+    </div>
 </section>
 
+<!-- الخدمات الطبية -->
 <section id="services">
-<span>🩺 خدماتنا</span>
-<h2>خدماتنا <span>الطبية المتكاملة</span></h2>
-<p>اضغط على أي خدمة لحجز موعدك عبر واتساب</p>
-<div>
-<a href="https://wa.me/967773146875?text=%D8%AA%D8%AD%D8%A7%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AF%D9%85" target="_blank"><div>🩸</div><h3>تحاليل الدم</h3><p>صورة دم كاملة، سكر، دهون، وظائف كبد وكلى</p><div>احجز ←</div></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%87%D8%B1%D9%85%D9%88%D9%86%D8%A7%D8%AA" target="_blank"><div>🧬</div><h3>الهرمونات</h3><p>الغدة الدرقية، هرمونات الخصوبة والنمو</p><div>احجز ←</div></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%81%D8%AD%D9%88%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D9%8A%D9%83%D8%B1%D9%88%D8%A8%D9%8A%D8%A9" target="_blank"><div>🦠</div><h3>الفحوصات الميكروبية</h3><p>مزارع، حساسية، وفحوصات فيروسية</p><div>احجز ←</div></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%83%D9%8A%D9%85%D9%8A%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%8A%D9%88%D9%8A%D8%A9" target="_blank"><div>🧪</div><h3>الكيمياء الحيوية</h3><p>تحاليل دقيقة بأحدث الأجهزة الآلية</p><div>احجز ←</div></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B9%D8%A9%20%D9%88%D8%A7%D9%84%D8%AD%D8%A7%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9" target="_blank"><div>💉</div><h3>المناعة والحساسية</h3><p>فحوصات شاملة للحساسية والمناعة</p><div>احجز ←</div></a>
-<div><div>📋</div><h3>نتائج إلكترونية</h3><p>يستلم المريض نتيجته عبر رابط آمن خاص به فقط</p><div>✓ متوفر تلقائياً</div></div>
-</div>
+    <div class="sec-header">
+        <span>🩺 خدماتنا</span>
+        <h2>خدماتنا <span>الطبية المتكاملة</span></h2>
+        <p>اضغط على أي خدمة لحجزها فوراً عبر واتساب</p>
+    </div>
+    <div class="grid-box">
+        <a href="https://wa.me/967773146875?text=أريد الاستفسار عن تحاليل الدم" target="_blank" class="service-card">
+            <div class="icon">🩸</div>
+            <h3>تحاليل الدم</h3>
+            <p>صورة دم كاملة CBC، سكر الدم، الدهون، وظائف الكبد والكلى.</p>
+        </a>
+        <a href="https://wa.me/967773146875?text=أريد الاستفسار عن فحوصات الهرمونات" target="_blank" class="service-card">
+            <div class="icon">🧬</div>
+            <h3>الهرمونات</h3>
+            <p>فحوصات الغدة الدرقية، الهرمونات التناسلية وفحوصات الخصوبة.</p>
+        </a>
+        <a href="https://wa.me/967773146875?text=أريد الاستفسار عن الفحوصات الميكروبية" target="_blank" class="service-card">
+            <div class="icon">🦠</div>
+            <h3>الفحوصات الميكروبية</h3>
+            <p>المزارع البكتيرية، اختبارات الحساسية والفيروسات.</p>
+        </a>
+        <a href="https://wa.me/967773146875?text=أريد الاستفسار عن الكيمياء الحيوية" target="_blank" class="service-card">
+            <div class="icon">🧪</div>
+            <h3>الكيمياء الحيوية</h3>
+            <p>تحاليل حيوية دقيقة بأجهزة آلية حديثة ومتطورة.</p>
+        </a>
+    </div>
 </section>
 
+<!-- قائمة التحاليل المتوفرة -->
 <section id="tests">
-<span>🧪 جميع التحاليل</span>
-<h2>التحاليل <span>المتوفرة</span></h2>
-<p>اضغط على أي تحليل لحجزه عبر واتساب</p>
-<div>
-<a href="https://wa.me/967773146875?text=%D8%B5%D9%88%D8%B1%D8%A9%20%D8%AF%D9%85%20%D9%83%D8%A7%D9%85%D9%84%D8%A9" target="_blank"><span>صورة دم كاملة</span><span>CBC</span></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%87%D9%8A%D9%85%D9%88%D8%BA%D9%84%D9%88%D8%A8%D9%8A%D9%86" target="_blank"><span>الهيموغلوبين</span><span>Hb</span></a>
-<a href="https://wa.me/967773146875?text=%D9%83%D8%B1%D9%8A%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%85%20%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1" target="_blank"><span>كريات الدم البيضاء</span><span>WBC</span></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B5%D9%81%D8%A7%D8%A6%D8%AD%20%D8%A7%D9%84%D8%AF%D9%85%D9%88%D9%8A%D8%A9" target="_blank"><span>الصفائح الدموية</span><span>PLT</span></a>
-<a href="https://wa.me/967773146875?text=%D8%B3%D9%83%D8%B1%20%D8%A7%D9%84%D8%AF%D9%85%20%D8%A7%D9%84%D8%B5%D8%A7%D8%A6%D9%85" target="_blank"><span>سكر الدم الصائم</span><span>FBS</span></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D9%83%D8%B1%20%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D9%83%D9%85%D9%8A" target="_blank"><span>السكر التراكمي</span><span>HbA1c</span></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%83%D9%88%D9%84%D9%8A%D8%B3%D8%AA%D8%B1%D9%88%D9%84" target="_blank"><span>الكوليسترول</span><span>Chol</span></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%AF%D9%87%D9%88%D9%86%20%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB%D9%8A%D8%A9" target="_blank"><span>الدهون الثلاثية</span><span>TG</span></a>
-<a href="https://wa.me/967773146875?text=%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D9%83%D9%84%D9%89" target="_blank"><span>وظائف الكلى</span><span>Cr</span></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%8A%D9%88%D8%B1%D9%8A%D8%A7" target="_blank"><span>اليوريا</span><span>Urea</span></a>
-<a href="https://wa.me/967773146875?text=%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D9%83%D8%A8%D8%AF" target="_blank"><span>وظائف الكبد</span><span>ALT/AST</span></a>
-<a href="https://wa.me/967773146875?text=%D9%87%D8%B1%D9%85%D9%88%D9%86%20%D8%A7%D9%84%D8%BA%D8%AF%D8%A9%20%D8%A7%D9%84%D8%AF%D8%B1%D9%82%D9%8A%D8%A9" target="_blank"><span>هرمون الغدة الدرقية</span><span>TSH</span></a>
-<a href="https://wa.me/967773146875?text=%D9%87%D8%B1%D9%85%D9%88%D9%86%20T3%20%D9%88%20T4" target="_blank"><span>هرمون T3 / T4</span><span>T3/T4</span></a>
-<a href="https://wa.me/967773146875?text=%D9%81%D9%8A%D8%AA%D8%A7%D9%85%D9%8A%D9%86%20%D8%AF" target="_blank"><span>فيتامين د</span><span>Vit D</span></a>
-<a href="https://wa.me/967773146875?text=%D9%81%D9%8A%D8%AA%D8%A7%D9%85%D9%8A%D9%86%20%D8%A8%D9%A1%D9%A2" target="_blank"><span>فيتامين ب12</span><span>B12</span></a>
-<a href="https://wa.me/967773146875?text=%D9%85%D8%AE%D8%B2%D9%88%D9%86%20%D8%A7%D9%84%D8%AD%D8%AF%D9%8A%D8%AF" target="_blank"><span>مخزون الحديد</span><span>Ferritin</span></a>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D9%83%D8%A7%D9%84%D8%B3%D9%8A%D9%88%D9%85" target="_blank"><span>الكالسيوم</span><span>Ca</span></a>
-<a href="https://wa.me/967773146875?text=%D8%AD%D9%85%D8%B6%20%D8%A7%D9%84%D9%8A%D9%88%D8%B1%D9%8A%D9%83" target="_blank"><span>حمض اليوريك</span><span>Uric</span></a>
-<a href="https://wa.me/967773146875?text=%D8%AA%D8%AD%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%AD%D9%85%D9%84" target="_blank"><span>تحليل الحمل</span><span>HCG</span></a>
-<a href="https://wa.me/967773146875?text=%D9%85%D8%B2%D8%B1%D8%B9%D8%A9%20%D8%A7%D9%84%D8%A8%D9%88%D9%84" target="_blank"><span>مزرعة البول</span><span>C/S</span></a>
-</div>
+    <div class="sec-header">
+        <span>🧪 دليل التحاليل</span>
+        <h2>جميع التحاليل <span>المتوفرة</span></h2>
+        <p>انقر على أي تحليل لحجزه مباشرة</p>
+    </div>
+    <div class="tests-container">
+        <a href="https://wa.me/967773146875?text=حجز تحليل صورة دم كاملة CBC" target="_blank" class="test-item"><span>🩸 صورة دم كاملة</span> <strong>CBC</strong></a>
+        <a href="https://wa.me/967773146875?text=حجز تحليل الهيموغلوبين Hb" target="_blank" class="test-item"><span>🩸 الهيموغلوبين</span> <strong>Hb</strong></a>
+        <a href="https://wa.me/967773146875?text=حجز تحليل سكر الدم الصائم FBS" target="_blank" class="test-item"><span>🧪 سكر الدم الصائم</span> <strong>FBS</strong></a>
+        <a href="https://wa.me/967773146875?text=حجز تحليل السكر التراكمي HbA1c" target="_blank" class="test-item"><span>🧬 السكر التراكمي</span> <strong>HbA1c</strong></a>
+        <a href="https://wa.me/967773146875?text=حجز تحليل وظائف الكلى Cr" target="_blank" class="test-item"><span>⚡ وظائف الكلى</span> <strong>Cr</strong></a>
+        <a href="https://wa.me/967773146875?text=حجز تحليل وظائف الكبد ALT AST" target="_blank" class="test-item"><span>🔬 وظائف الكبد</span> <strong>ALT/AST</strong></a>
+        <a href="https://wa.me/967773146875?text=حجز تحليل الغدة الدرقية TSH" target="_blank" class="test-item"><span>⭐ الغدة الدرقية</span> <strong>TSH</strong></a>
+        <a href="https://wa.me/967773146875?text=حجز تحليل فيتامين د" target="_blank" class="test-item"><span>☀️ فيتامين د</span> <strong>Vit D</strong></a>
+    </div>
 </section>
 
+<!-- الأسعار التقريبية -->
 <section id="prices">
-<span>💰 الأسعار</span>
-<h2>الأسعار <span>التقريبية</span></h2>
-<p>أسعار منافسة وجودة عالية</p>
-<div>
-<div><span>🩸 صورة دم كاملة (CBC)</span><span>5,000 ريال</span></div>
-<div><span>🩸 سكر الدم الصائم</span><span>2,000 ريال</span></div>
-<div><span>🩸 السكر التراكمي (HbA1c)</span><span>6,000 ريال</span></div>
-<div><span>🩸 الكوليسترول</span><span>3,500 ريال</span></div>
-<div><span>🩸 الدهون الثلاثية</span><span>4,000 ريال</span></div>
-<div><span>🩸 وظائف الكلى</span><span>6,000 ريال</span></div>
-<div><span>🩸 وظائف الكبد</span><span>7,000 ريال</span></div>
-<div><span>🩸 الغدة الدرقية (TSH)</span><span>5,000 ريال</span></div>
-<div><span>🩸 فيتامين د</span><span>8,000 ريال</span></div>
-<div><span>🩸 فيتامين ب12</span><span>7,000 ريال</span></div>
-</div>
-<div>
-<h4>📦 باقات مخفّضة</h4>
-<p>🏆 باقة الفحص الشامل — <strong>15,000 ريال</strong></p>
-<p>🩸 باقة السكري — <strong>7,000 ريال</strong></p>
-<p>🤰 باقة الحمل — <strong>10,000 ريال</strong></p>
-</div>
+    <div class="sec-header">
+        <span>💰 الأسعار</span>
+        <h2>قائمة الأسعار <span>التقريبية</span></h2>
+        <p>أسعار منافسة وجودة تشخيصية عالية</p>
+    </div>
+    <div class="price-table">
+        <div class="price-row"><span>🩸 صورة دم كاملة (CBC)</span> <strong>5,000 ريال</strong></div>
+        <div class="price-row"><span>🧪 سكر الدم الصائم (FBS)</span> <strong>2,000 ريال</strong></div>
+        <div class="price-row"><span>🧬 السكر التراكمي (HbA1c)</span> <strong>6,000 ريال</strong></div>
+        <div class="price-row"><span>⚡ وظائف الكلى (Cr)</span> <strong>6,000 ريال</strong></div>
+        <div class="price-row"><span>🔬 وظائف الكبد (ALT/AST)</span> <strong>7,000 ريال</strong></div>
+        <div class="price-row"><span>⭐ هرمون الغدة الدرقية (TSH)</span> <strong>5,000 ريال</strong></div>
+        <div class="price-row" style="background: #e0f2f1; border-radius: 6px;"><span>📦 باقة الفحص الشامل (عروض الشهر)</span> <strong style="color: #004d40;">15,000 ريال</strong></div>
+    </div>
 </section>
 
-<section id="reviews">
-<span>⭐ آراء العملاء</span>
-<h2>ماذا يقول <span>عملاؤنا؟</span></h2>
-<p>تجارب حقيقية من مرضانا الكرام</p>
-<div>
-<div><div>★★★★★</div><p>خدمة سريعة ودقيقة، والفريق متعاون جداً. النتيجة وصلتني في نفس اليوم.</p><div>أحمد محمد</div></div>
-<div><div>★★★★★</div><p>النتيجة وصلتني على واتساب مباشرة عبر رابط خاص. خدمة ممتازة!</p><div>سارة علي</div></div>
-<div><div>★★★★★</div><p>تعامل راقي وأسعار مناسبة. أنصح به بشدة لكل من يحتاج تحاليل دقيقة.</p><div>محمد حسن</div></div>
-</div>
-</section>
-
-<section id="features">
-<span>🏆 ما يميزنا</span>
-<h2>لماذا <span>نحن الأفضل؟</span></h2>
-<p>أسباب تجعلنا الخيار الأول</p>
-<div>
-<div><div>🔬</div><div><h4>أجهزة حديثة</h4><p>معتمدة دولياً ومعايرة دورياً</p></div></div>
-<div><div>⚡</div><div><h4>نتائج سريعة</h4><p>خلال 24 ساعة أو أقل</p></div></div>
-<div><div>📲</div><div><h4>إشعار واتساب</h4><p>النتيجة تصلك عبر واتساب</p></div></div>
-<div><div>🔒</div><div><h4>خصوصية تامة</h4><p>رابط خاص لكل مريض</p></div></div>
-<div><div>👨‍⚕️</div><div><h4>كادر متخصص</h4><p>فنيون ذوو خبرة عالية</p></div></div>
-<div><div>💵</div><div><h4>أسعار منافسة</h4><p>أفضل قيمة مقابل الجودة</p></div></div>
-</div>
-</section>
-
-<section id="calc">
-<span>🧮 احسب تكلفتك</span>
-<h2>حاسبة <span>الأسعار</span></h2>
-<p>اختر التحاليل التي تحتاجها وسنحسب المجموع</p>
-<div>
-<div></div>
-<div>
-<div>المجموع التقريبي</div>
-<div>0 ريال</div>
-</div>
-</div>
-</section>
-
+<!-- الأسئلة الشائعة -->
 <section id="faq">
-<span>❓ أسئلة شائعة</span>
-<h2>الأسئلة <span>الشائعة</span></h2>
-<p>إجابات لأكثر ما يسأل عنه مرضانا</p>
-<div>
-<details><summary>كم يستغرق ظهور نتيجة الفحص؟</summary><p>عادة خلال 24 ساعة. بعض التحاليل السريعة تظهر خلال ساعات، والمزارع قد تستغرق 3-5 أيام.</p></details>
-<details><summary>هل النتائج سرية؟</summary><p>نعم، كل مريض يستلم رابطاً خاصاً به فقط، ولا يمكن لأي شخص آخر الوصول إلى نتائجه.</p></details>
-<details><summary>هل أحتاج حجزاً مسبقاً؟</summary><p>يمكنك الحضور مباشرة أو الحجز عبر واتساب لتجنب الانتظار.</p></details>
-<details><summary>كيف أستلم النتيجة؟</summary><p>عبر رابط خاص يُرسل لك على واتساب. اضغط الرابط لترى نتيجتك مباشرة.</p></details>
-<details><summary>هل تحتاج صياماً قبل التحليل؟</summary><p>يعتمد على نوع التحليل. تحاليل السكر والدهون تحتاج صيام 8-12 ساعة.</p></details>
-<details><summary>هل لديكم خدمة السحب المنزلي؟</summary><p>نعم، نوفر خدمة السحب المنزلي في صنعاء وسعوان وما حولها.</p></details>
-</div>
+    <div class="sec-header">
+        <span>❓ مساعدة</span>
+        <h2>الأسئلة <span>الشائعة</span></h2>
+        <p>إجابات سريعة لأبرز استفسارات مرضانا</p>
+    </div>
+    <div style="max-width: 800px; margin: auto;">
+        <details>
+            <summary>كم يستغرق ظهور نتيجة الفحص الطبي؟</summary>
+            <p>عادة تظهر النتائج خلال 24 ساعة كحد أقصى، والبعض الآخر يظهر خلال ساعات معدودة، بينما المزارع المخبرية قد تستغرق 3-5 أيام.</p>
+        </details>
+        <details>
+            <summary>كيف يمكنني استلام نتيجة الفحص؟</summary>
+            <p>يتم إرسال رابط آمن وخاص بنتيجة فحصك مباشرة إلى رقم الواتساب الخاص بك بكل سرية وأمان.</p>
+        </details>
+        <details>
+            <summary>هل تتوفر خدمة السحب المنزلي؟</summary>
+            <p>نعم، نوفر خدمة السحب المنزلي في العاصمة صنعاء ومنطقة سعوان وما حولها بكل راحة وسهولة.</p>
+        </details>
+    </div>
 </section>
 
-<section id="partners">
-<span>🤝 شركاؤنا</span>
-<h2>شركاء <span>النجاح</span></h2>
-<p>نفتخر بثقة شركائنا في القطاع الصحي</p>
-<div>
-<div><span>🏥</span><div>مستشفى ابن المبرزي</div><div>شريك رئيسي</div></div>
-<div><span>🩺</span><div>عيادات الشفاء</div><div>شريك صحي</div></div>
-<div><span>💊</span><div>صيدلية النور</div><div>شريك دوائي</div></div>
-<div><span>🧬</span><div>مركز الأمل</div><div>شريك تشخيصي</div></div>
-</div>
-</section>
-
-<section id="home-service">
-<div>
-<div>🏠</div>
-<h2>خدمة السحب المنزلي</h2>
-<p>لا تحتاج مغادرة منزلك! نأتي إليك لسحب العينة في الوقت المناسب لك</p>
-<div>
-<div>📍 صنعاء - سعوان</div>
-<div>💰 3,000 ريال</div>
-<div>⏰ يومياً</div>
-</div>
-<a href="https://wa.me/967773146875?text=%D8%A7%D9%84%D8%B3%D8%AD%D8%A8%20%D8%A7%D9%84%D9%85%D9%86%D8%B2%D9%84%D9%8A" target="_blank">🏠 احجز زيارتك المنزلية</a>
-</div>
-</section>
-
+<!-- التواصل والحجز -->
 <section id="contact">
-<div>
-<h2>تواصل معنا</h2>
-<p>احجز فحصك أو استفسر عن أي شيء — نحن في خدمتك</p>
-<a href="https://wa.me/967773146875">💬 محادثة واتساب</a>
-<a href="tel:967773146875">📞 اتصل بنا</a>
-</div>
+    <div class="contact-section">
+        <h2>تواصل معنا واحجز موعدك الآن</h2>
+        <p>فريقنا الطبي الفني في خدمتك على مدار الساعة للإجابة على كافة استفساراتك</p>
+        <a href="https://wa.me/967773146875?text=مرحباً، أود حجز موعد في مختبرات مستشفى ابن المبرزي" target="_blank" class="wa-btn">
+            💬 محادثة مباشرة عبر واتساب
+        </a>
+    </div>
 </section>
 
+<!-- الفوتر -->
 <footer>
-<div>🏥 مختبرات مستشفى ابن المبرزي التخصصي</div>
-<div></div>
-<p>© 2026 مختبرات مستشفى ابن المبرزي التخصصي — <span>جميع الحقوق محفوظة</span></p>
-<span>مشروع اختبار نهائي — كلية رواد النهضة</span>
+    <p>© 2026 <span class="footer-name">مختبرات مستشفى ابن المبرزي التخصصي</span> — جميع الحقوق محفوظة</p>
+    <p style="margin-top: 6px; font-size: 12px; color: #aaa;">مشروع تخرج / تدريب نهائي — كلية رواد النهضة (صنعاء)</p>
 </footer>
-
-<a href="https://wa.me/967773146875" target="_blank" title="تواصل عبر واتساب">💬</a>
-
-<div>
-<div>
-<div>
-<span>🤖 مرشد مختبرات ابن المبرزي</span>
-</div>
-<div>
-<div>👋 مرحباً بك في مختبرات مستشفى ابن المبرزي التخصصي! إليك 15 سؤالاً شائعاً، انقر على أي سؤاللتظهر لك إجابته الفورية:</div>
-<div></div>
-</div>
-</div>
-</div>
 
 </body>
 </html>
